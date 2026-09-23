@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <title>mapoo (مپو)</title>
+</head>
+
+<body>
+  <div class="app">
+<header>
+  <div class="container header-inner">
+    <div class="brand">
+      <div class="brand-icon">📍</div>
+      <div>
+        <h1>mapoo (مپو)</h1>
+        <p>تبدیل لینک مکان بین سرویس‌های نقشه</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <section class="card">
+      <label class="input-label" for="urlInput">
+        لینک مکان را وارد کنید
+      </label>
+
+      <div class="input-row">
+        <input
+          id="urlInput"
+          type="text"
+          inputmode="url"
+          autocomplete="off"
+          placeholder="مثلاً لینک Google Maps یا Neshan"
+          dir="ltr"
+        />
+
+        <button id="convertBtn" class="primary-btn" type="button">
+          تبدیل لینک
+        </button>
+      </div>
+
+      <div id="message" class="message"></div>
+
+      <div id="apps" class="apps">
+        <div class="app-card">
+          <span class="app-name">Google Maps</span>
+          <a
+            id="googleLink"
+            class="app-link"
+            href="#"
+            target="_blank"
+            rel="noopener"
+          >
+            باز کردن
+          </a>
+        </div>
+
+        <div class="app-card">
+          <span class="app-name">Waze</span>
+          <a
+            id="wazeLink"
+            class="app-link"
+            href="#"
+            target="_blank"
+            rel="noopener"
+          >
+            باز کردن
+          </a>
+        </div>
+
+        <div class="app-card">
+          <span class="app-name">Neshan</span>
+          <a
+            id="neshanLink"
+            class="app-link"
+            href="#"
+            target="_blank"
+            rel="noopener"
+          >
+            باز کردن
+          </a>
+        </div>
+
+        <div class="app-card">
+          <span class="app-name">Balad</span>
+          <a
+            id="baladLink"
+            class="app-link"
+            href="#"
+            target="_blank"
+            rel="noopener"
+          >
+            باز کردن
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-header">
+        <h2 class="section-title">مکان‌های ذخیره‌شده</h2>
+        <button id="clearHistoryBtn" class="clear-btn" type="button">
+          پاک کردن همه
+        </button>
+      </div>
+
+      <div id="historyList" class="history-list"></div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <span class="footer-name">mapoo (مپو)</span>
+  <span> · نسخه 0.1</span>
+</footer>
+
+  </div>
+<script src="script.js"></script>
+</body>
+</html>
