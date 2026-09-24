@@ -1,5 +1,5 @@
 const STORAGE_KEY = "mapoo_history";
-const VERSION = "0.1";
+const MAPOO_VERSION = "0.1";
 
 const urlInput = document.getElementById("urlInput");
 const convertBtn = document.getElementById("convertBtn");
