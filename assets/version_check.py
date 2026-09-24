@@ -16,7 +16,7 @@ CHANGELOG_ITEMS = [
 ISSUE_TEMPLATE_ITEMS = ["- Mapoo {0}"]
 SECURITY_ITEMS = ["| {0}           | :white_check_mark: |", "| < {0}         | :x:                |"]
 SERVICE_WORKER_ITEMS = ["mapoo-v{0}"]
-SCRIPT_ITEMS = ["MAPOO_VERSION = 'v{0}'"]
+SCRIPT_ITEMS = ['MAPOO_VERSION = "{0}"']
 
 FILES = {
     #"index.html": INDEX_ITEMS,
