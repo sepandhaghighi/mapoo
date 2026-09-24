@@ -1,0 +1,392 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Tahoma, "Vazirmatn", "IRANSans", Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.app {
+    width: 100%;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: min(100% - 24px, 760px);
+    margin: 0 auto;
+}
+
+header {
+    background: #0f172a;
+    color: white;
+    padding: 24px 0;
+    padding-top: max(24px, env(safe-area-inset-top));
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+.brand p {
+    margin: 4px 0 0;
+    color: #cbd5e1;
+    font-size: 13px;
+}
+
+main {
+    flex: 1;
+    padding: 24px 0 32px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.07);
+    margin-bottom: 18px;
+}
+
+.input-label {
+    display: block;
+    margin-bottom: 9px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+#urlInput {
+    flex: 1;
+    min-width: 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 13px 14px;
+    outline: none;
+    background: #fff;
+    color: #0f172a;
+    direction: ltr;
+    text-align: left;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#urlInput:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.primary-btn {
+    border: 0;
+    border-radius: 12px;
+    padding: 0 20px;
+    min-height: 48px;
+    background: #2563eb;
+    color: white;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.primary-btn:hover {
+    background: #1d4ed8;
+}
+
+.message {
+    display: none;
+    margin-top: 12px;
+    padding: 11px 13px;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.message.error {
+    display: block;
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+.message.success {
+    display: block;
+    background: #f0fdf4;
+    color: #15803d;
+}
+
+/* Hidden until a valid link is converted */
+.apps {
+    display: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.apps.visible {
+    display: grid;
+}
+
+.app-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-width: 0;
+}
+
+.app-name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.app-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 8px 13px;
+    border-radius: 9px;
+    background: #f1f5f9;
+    color: #334155;
+    text-decoration: none;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.app-link.active {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.section-title {
+    margin: 0;
+    font-size: 17px;
+}
+
+.clear-btn {
+    border: 0;
+    background: transparent;
+    color: #dc2626;
+    font-size: 13px;
+    padding: 7px 4px;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.history-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 13px;
+    padding: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.history-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.history-url {
+    direction: ltr;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #334155;
+    font-size: 13px;
+}
+
+.history-date {
+    color: #94a3b8;
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.history-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+}
+
+.history-open,
+.history-delete {
+    border: 0;
+    border-radius: 9px;
+    min-height: 38px;
+    padding: 7px 11px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.history-open {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+.history-delete {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.empty-history {
+    color: #94a3b8;
+    text-align: center;
+    padding: 18px 0;
+    font-size: 13px;
+}
+
+footer {
+    padding: 18px 0;
+    padding-bottom: max(18px, env(safe-area-inset-bottom));
+    text-align: center;
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.footer-name {
+    color: #475569;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .container {
+    width: min(100% - 16px, 760px);
+    }
+
+    header {
+    padding-top: max(18px, env(safe-area-inset-top));
+    padding-bottom: 18px;
+    }
+
+    .brand-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    }
+
+    .brand h1 {
+    font-size: 21px;
+    }
+
+    .brand p {
+    font-size: 12px;
+    }
+
+    main {
+    padding-top: 16px;
+    }
+
+    .card {
+    padding: 16px;
+    border-radius: 15px;
+    }
+
+    .input-row {
+    flex-direction: column;
+    }
+
+    .primary-btn {
+    width: 100%;
+    }
+
+    .apps.visible {
+    grid-template-columns: 1fr;
+    }
+
+    .app-card {
+    min-height: 64px;
+    }
+
+    .history-item {
+    align-items: flex-start;
+    }
+
+    .history-actions {
+    flex-direction: column;
+    }
+
+    .history-open,
+    .history-delete {
+    width: 74px;
+    }
+}
+
+@media (max-width: 380px) {
+    .history-item {
+    flex-direction: column;
+    }
+
+    .history-actions {
+    width: 100%;
+    flex-direction: row;
+    }
+
+    .history-open,
+    .history-delete {
+    flex: 1;
+    width: auto;
+    }
+}
