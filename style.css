@@ -102,7 +102,7 @@ main {
     gap: 10px;
 }
 
-#urlInput {
+#url-input {
     flex: 1;
     min-width: 0;
     border: 1px solid #cbd5e1;
@@ -116,7 +116,7 @@ main {
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-#urlInput:focus {
+#url-input:focus {
     border-color: #2563eb;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }

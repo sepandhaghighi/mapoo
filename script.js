@@ -1,7 +1,7 @@
 const STORAGE_KEY = "mapoo_history";
 const MAPOO_VERSION = "0.1";
 
-const urlInput = document.getElementById("urlInput");
+const urlInput = document.getElementById("url-input");
 const convertBtn = document.getElementById("convertBtn");
 const message = document.getElementById("message");
 const apps = document.getElementById("apps");
