@@ -1,4 +1,4 @@
-const STORAGE_KEY = "mapoo_history";
+const STORAGE_KEY = "mapooHistory";
 const MAPOO_VERSION = "0.1";
 
 const urlInput = document.getElementById("url-input");
