@@ -11,7 +11,7 @@ const wazeLink = document.getElementById("waze-link");
 const neshanLink = document.getElementById("neshan-link");
 const baladLink = document.getElementById("balad-link");
 
-const historyList = document.getElementById("historyList");
+const historyList = document.getElementById("history-list");
 const clearHistoryBtn = document.getElementById("clear-history-btn");
 
 function resetOutputLinks() {
