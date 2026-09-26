@@ -9,7 +9,7 @@ const apps = document.getElementById("apps");
 const googleLink = document.getElementById("google-link");
 const wazeLink = document.getElementById("waze-link");
 const neshanLink = document.getElementById("neshan-link");
-const baladLink = document.getElementById("baladLink");
+const baladLink = document.getElementById("balad-link");
 
 const historyList = document.getElementById("historyList");
 const clearHistoryBtn = document.getElementById("clearHistoryBtn");
