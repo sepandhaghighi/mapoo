@@ -6,7 +6,7 @@ const convertBtn = document.getElementById("convert-btn");
 const message = document.getElementById("message");
 const apps = document.getElementById("apps");
 
-const googleLink = document.getElementById("googleLink");
+const googleLink = document.getElementById("google-link");
 const wazeLink = document.getElementById("wazeLink");
 const neshanLink = document.getElementById("neshanLink");
 const baladLink = document.getElementById("baladLink");
