@@ -2,8 +2,7 @@
     box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
     margin: 0;
     padding: 0;
     min-height: 100%;
@@ -15,8 +14,7 @@ body {
     color: #0f172a;
 }
 
-button,
-input {
+button, input {
     font: inherit;
 }
 
@@ -159,7 +157,7 @@ main {
     color: #15803d;
 }
 
-/* Hidden until a valid link is converted */
+
 .apps {
     display: none;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -271,8 +269,7 @@ main {
     flex-shrink: 0;
 }
 
-.history-open,
-.history-delete {
+.history-open, .history-delete {
     border: 0;
     border-radius: 9px;
     min-height: 38px;
@@ -312,81 +309,81 @@ footer {
 }
 
 @media (max-width: 600px) {
+
     .container {
-    width: min(100% - 16px, 760px);
+        width: min(100% - 16px, 760px);
     }
 
     header {
-    padding-top: max(18px, env(safe-area-inset-top));
-    padding-bottom: 18px;
+        padding-top: max(18px, env(safe-area-inset-top));
+        padding-bottom: 18px;
     }
 
     .brand-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
     }
 
     .brand h1 {
-    font-size: 21px;
+        font-size: 21px;
     }
 
     .brand p {
-    font-size: 12px;
+        font-size: 12px;
     }
 
     main {
-    padding-top: 16px;
+        padding-top: 16px;
     }
 
     .card {
-    padding: 16px;
-    border-radius: 15px;
+        padding: 16px;
+        border-radius: 15px;
     }
 
     .input-row {
-    flex-direction: column;
+        flex-direction: column;
     }
 
     .primary-btn {
-    width: 100%;
+        width: 100%;
     }
 
     .apps.visible {
-    grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     }
 
     .app-card {
-    min-height: 64px;
+        min-height: 64px;
     }
 
     .history-item {
-    align-items: flex-start;
+        align-items: flex-start;
     }
 
     .history-actions {
-    flex-direction: column;
+        flex-direction: column;
     }
 
-    .history-open,
-    .history-delete {
-    width: 74px;
+    .history-open, .history-delete {
+        width: 74px;
     }
 }
 
 @media (max-width: 380px) {
+    
     .history-item {
-    flex-direction: column;
+        flex-direction: column;
     }
 
     .history-actions {
-    width: 100%;
-    flex-direction: row;
+        width: 100%;
+        flex-direction: row;
     }
 
-    .history-open,
-    .history-delete {
-    flex: 1;
-    width: auto;
+    .history-open, .history-delete {
+        flex: 1;
+        width: auto;
     }
 }

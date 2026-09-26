@@ -17,16 +17,11 @@ const clearHistoryBtn = document.getElementById("clearHistoryBtn");
 function resetOutputLinks() {
     apps.classList.remove("visible");
 
-    const links = [
-    googleLink,
-    wazeLink,
-    neshanLink,
-    baladLink
-    ];
+    const links = [googleLink, wazeLink, neshanLink, baladLink];
 
     links.forEach(link => {
-    link.href = "#";
-    link.classList.remove("active");
+        link.href = "#";
+        link.classList.remove("active");
     });
 }
 
@@ -44,17 +39,17 @@ function normalizeInput(value) {
     let input = value.trim();
 
     for (let i = 0; i < 3; i++) {
-    try {
-        const decoded = decodeURIComponent(input);
+        try {
+            const decoded = decodeURIComponent(input);
 
-        if (decoded === input) {
-        break;
+            if (decoded === input) {
+                break;
+            }
+
+            input = decoded;
+        } catch {
+            break;
         }
-
-        input = decoded;
-    } catch {
-        break;
-    }
     }
 
     return input;
@@ -63,103 +58,85 @@ function normalizeInput(value) {
 function extractCoordinates(input) {
     const value = normalizeInput(input);
 
-    const neshanHash = value.match(
-    /#c(-?\d+(?:\.\d+)?)-(-?\d+(?:\.\d+)?)(?:-\d+(?:\.\d+)?z)?(?:-\d+p)?/i
-    );
+    const neshanHash = value.match(/#c(-?\d+(?:\.\d+)?)-(-?\d+(?:\.\d+)?)(?:-\d+(?:\.\d+)?z)?(?:-\d+p)?/i);
 
     if (neshanHash) {
-    return {
-        lat: Number(neshanHash[1]),
-        lng: Number(neshanHash[2])
-    };
+        return {
+            lat: Number(neshanHash[1]),
+            lng: Number(neshanHash[2])
+        };
     }
 
-    const googleAt = value.match(
-    /@(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i
-    );
+    const googleAt = value.match(/@(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i);
 
     if (googleAt) {
-    return {
-        lat: Number(googleAt[1]),
-        lng: Number(googleAt[2])
-    };
+        return {
+            lat: Number(googleAt[1]),
+            lng: Number(googleAt[2])
+        };
     }
 
-    const googleQuery = value.match(
-    /(?:[?&](?:q|query)=)(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i
-    );
+    const googleQuery = value.match(/(?:[?&](?:q|query)=)(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i);
 
     if (googleQuery) {
-    return {
-        lat: Number(googleQuery[1]),
-        lng: Number(googleQuery[2])
-    };
+        return {
+            lat: Number(googleQuery[1]),
+            lng: Number(googleQuery[2])
+        };
     }
 
-    const waze = value.match(
-    /(?:[?&]ll=)(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i
-    );
+    const waze = value.match(/(?:[?&]ll=)(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i);
 
     if (waze) {
-    return {
-        lat: Number(waze[1]),
-        lng: Number(waze[2])
-    };
+        return {
+            lat: Number(waze[1]),
+            lng: Number(waze[2])
+        };
     }
 
-    const latLng = value.match(
-    /(?:[?&]|^)(?:lat(?:itude)?|y)=(-?\d+(?:\.\d+)?)[^#]*?(?:[?&]|&)(?:lng|lon|longitude|x)=(-?\d+(?:\.\d+)?)/i
-    );
+    const latLng = value.match(/(?:[?&]|^)(?:lat(?:itude)?|y)=(-?\d+(?:\.\d+)?)[^#]*?(?:[?&]|&)(?:lng|lon|longitude|x)=(-?\d+(?:\.\d+)?)/i);
 
     if (latLng) {
-    return {
-        lat: Number(latLng[1]),
-        lng: Number(latLng[2])
-    };
+        return {
+            lat: Number(latLng[1]),
+            lng: Number(latLng[2])
+        };
     }
 
-    const lngLat = value.match(
-    /(?:[?&]|^)(?:lng|lon|longitude|x)=(-?\d+(?:\.\d+)?)[^#]*?(?:[?&]|&)(?:lat(?:itude)?|y)=(-?\d+(?:\.\d+)?)/i
-    );
+    const lngLat = value.match(/(?:[?&]|^)(?:lng|lon|longitude|x)=(-?\d+(?:\.\d+)?)[^#]*?(?:[?&]|&)(?:lat(?:itude)?|y)=(-?\d+(?:\.\d+)?)/i);
 
     if (lngLat) {
-    return {
-        lat: Number(lngLat[2]),
-        lng: Number(lngLat[1])
-    };
+        return {
+            lat: Number(lngLat[2]),
+            lng: Number(lngLat[1])
+        };
     }
 
-    const balad = value.match(
-    /[?&]latitude=(-?\d+(?:\.\d+))[^\s#]*?[?&]longitude=(-?\d+(?:\.\d+))/i
-    );
+    const balad = value.match(/[?&]latitude=(-?\d+(?:\.\d+))[^\s#]*?[?&]longitude=(-?\d+(?:\.\d+))/i);
 
     if (balad) {
-    return {
-        lat: Number(balad[1]),
-        lng: Number(balad[2])
-    };
+        return {
+            lat: Number(balad[1]),
+            lng: Number(balad[2])
+        };
     }
 
-    const slashAt = value.match(
-    /\/@(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i
-    );
+    const slashAt = value.match(/\/@(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i);
 
     if (slashAt) {
-    return {
-        lat: Number(slashAt[1]),
-        lng: Number(slashAt[2])
-    };
+        return {
+            lat: Number(slashAt[1]),
+            lng: Number(slashAt[2])
+        };
     }
 
-    const rawCoordinates = value.match(
-    /^(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)$/
-    );
+    const rawCoordinates = value.match(/^(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)$/);
 
     if (rawCoordinates) {
-    return {
-        lat: Number(rawCoordinates[1]),
-        lng: Number(rawCoordinates[2])
-    };
+        return {
+            lat: Number(rawCoordinates[1]),
+            lng: Number(rawCoordinates[2])
+        };
     }
 
     return null;
@@ -167,28 +144,24 @@ function extractCoordinates(input) {
 
 function isValidCoordinates(lat, lng) {
     return (
-    Number.isFinite(lat) &&
-    Number.isFinite(lng) &&
-    lat >= -90 &&
-    lat <= 90 &&
-    lng >= -180 &&
-    lng <= 180
+        Number.isFinite(lat) &&
+        Number.isFinite(lng) &&
+        lat >= -90 &&
+        lat <= 90 &&
+        lng >= -180 &&
+        lng <= 180
     );
 }
 
 function createMapLinks(lat, lng) {
     return {
-    google:
-        `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`,
+        google: `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`,
 
-    waze:
-        `https://www.waze.com/ul?ll=${lat},${lng}&navigate=yes`,
+        waze: `https://www.waze.com/ul?ll=${lat},${lng}&navigate=yes`,
 
-    neshan:
-        `https://neshan.org/maps/share/${lat},${lng}`,
+        neshan: `https://neshan.org/maps/share/${lat},${lng}`,
 
-    balad:
-        `https://balad.ir/location?latitude=${lat}&longitude=${lng}&zoom=16.5`
+        balad: `https://balad.ir/location?latitude=${lat}&longitude=${lng}&zoom=16.5`
     };
 }
 
@@ -208,13 +181,10 @@ function setOutputLinks(links) {
 
 function getHistory() {
     try {
-    const data = JSON.parse(
-        localStorage.getItem(STORAGE_KEY) || "[]"
-    );
-
-    return Array.isArray(data) ? data : [];
+        const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+        return Array.isArray(data) ? data : [];
     } catch {
-    return [];
+        return [];
     }
 }
 
@@ -224,16 +194,13 @@ function saveHistory(input) {
     history = history.filter(item => item.url !== input);
 
     history.unshift({
-    url: input,
-    createdAt: Date.now()
+        url: input,
+        createdAt: Date.now()
     });
 
     history = history.slice(0, 30);
 
-    localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(history)
-    );
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
 
     renderHistory();
 }
@@ -242,23 +209,18 @@ function deleteHistoryItem(index) {
     const history = getHistory();
 
     if (!history[index]) {
-    return;
+        return;
     }
 
-    const shouldDelete = window.confirm(
-    "آیا از حذف این مکان از تاریخچه مطمئن هستید؟"
-    );
+    const shouldDelete = window.confirm("آیا از حذف این مکان از تاریخچه مطمئن هستید؟");
 
     if (!shouldDelete) {
-    return;
+        return;
     }
 
     history.splice(index, 1);
 
-    localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(history)
-    );
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
 
     renderHistory();
 }
@@ -267,15 +229,13 @@ function clearHistory() {
     const history = getHistory();
 
     if (!history.length) {
-    return;
+        return;
     }
 
-    const shouldDelete = window.confirm(
-    "آیا می‌خواهید تمام مکان‌های ذخیره‌شده حذف شوند؟"
-    );
+    const shouldDelete = window.confirm("آیا می‌خواهید تمام مکان‌های ذخیره‌شده حذف شوند؟");
 
     if (!shouldDelete) {
-    return;
+        return;
     }
 
     localStorage.removeItem(STORAGE_KEY);
@@ -284,12 +244,12 @@ function clearHistory() {
 
 function formatDate(timestamp) {
     try {
-    return new Intl.DateTimeFormat("fa-IR", {
-        dateStyle: "short",
-        timeStyle: "short"
-    }).format(new Date(timestamp));
+        return new Intl.DateTimeFormat("fa-IR", {
+            dateStyle: "short",
+            timeStyle: "short"
+        }).format(new Date(timestamp));
     } catch {
-    return new Date(timestamp).toLocaleString("fa-IR");
+        return new Date(timestamp).toLocaleString("fa-IR");
     }
 }
 
@@ -309,89 +269,84 @@ function renderHistory() {
     }
 
     history.forEach((item, index) => {
-    const row = document.createElement("div");
-    row.className = "history-item";
+        const row = document.createElement("div");
+        row.className = "history-item";
 
-    const info = document.createElement("div");
-    info.className = "history-info";
+        const info = document.createElement("div");
+        info.className = "history-info";
 
-    const url = document.createElement("div");
-    url.className = "history-url";
-    url.textContent = item.url;
-    url.title = item.url;
+        const url = document.createElement("div");
+        url.className = "history-url";
+        url.textContent = item.url;
+        url.title = item.url;
 
-    const date = document.createElement("div");
-    date.className = "history-date";
-    date.textContent = formatDate(item.createdAt);
+        const date = document.createElement("div");
+        date.className = "history-date";
+        date.textContent = formatDate(item.createdAt);
 
-    info.appendChild(url);
-    info.appendChild(date);
+        info.appendChild(url);
+        info.appendChild(date);
 
-    const actions = document.createElement("div");
-    actions.className = "history-actions";
+        const actions = document.createElement("div");
+        actions.className = "history-actions";
 
-    const openButton = document.createElement("button");
-    openButton.type = "button";
-    openButton.className = "history-open";
-    openButton.textContent = "تبدیل";
+        const openButton = document.createElement("button");
+        openButton.type = "button";
+        openButton.className = "history-open";
+        openButton.textContent = "تبدیل";
 
-    openButton.addEventListener("click", () => {
-        urlInput.value = item.url;
-        convertLink();
+        openButton.addEventListener("click", () => {
+            urlInput.value = item.url;
+            convertLink();
 
-        window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+            window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+            });
         });
-    });
 
-    const deleteButton = document.createElement("button");
-    deleteButton.type = "button";
-    deleteButton.className = "history-delete";
-    deleteButton.textContent = "حذف";
+        const deleteButton = document.createElement("button");
+        deleteButton.type = "button";
+        deleteButton.className = "history-delete";
+        deleteButton.textContent = "حذف";
 
-    deleteButton.addEventListener("click", () => {
-        deleteHistoryItem(index);
-    });
+        deleteButton.addEventListener("click", () => {
+            deleteHistoryItem(index);
+        });
 
-    actions.appendChild(openButton);
-    actions.appendChild(deleteButton);
+        actions.appendChild(openButton);
+        actions.appendChild(deleteButton);
 
-    row.appendChild(info);
-    row.appendChild(actions);
+        row.appendChild(info);
+        row.appendChild(actions);
 
-    historyList.appendChild(row);
+        historyList.appendChild(row);
     });
 }
 
 function convertLink() {
     clearMessage();
-
-    // Always hide old results first.
-    // This prevents invalid/empty links from remaining visible.
     resetOutputLinks();
 
     const input = urlInput.value.trim();
 
     if (!input) {
-    showMessage("لطفاً یک لینک مکان وارد کنید.");
-    return;
+        showMessage("لطفاً یک لینک مکان وارد کنید.");
+        return;
     }
 
     const coordinates = extractCoordinates(input);
 
     if (!coordinates) {
-    showMessage(
-        "مختصات مکان از این لینک قابل استخراج نیست. لطفاً لینک کامل مکان را وارد کنید."
-    );
-    return;
+        showMessage("مختصات مکان از این لینک قابل استخراج نیست. لطفاً لینک کامل مکان را وارد کنید.");
+        return;
     }
 
     const { lat, lng } = coordinates;
 
     if (!isValidCoordinates(lat, lng)) {
-    showMessage("مختصات واردشده معتبر نیست.");
-    return;
+        showMessage("مختصات واردشده معتبر نیست.");
+        return;
     }
 
     const links = createMapLinks(lat, lng);
@@ -399,22 +354,17 @@ function convertLink() {
     setOutputLinks(links);
     saveHistory(input);
 
-    showMessage(
-    `مختصات با موفقیت استخراج شد: ${lat}, ${lng}`,
-    "success"
-    );
+    showMessage(`مختصات با موفقیت استخراج شد: ${lat}, ${lng}`, "success");
 }
 
 convertBtn.addEventListener("click", convertLink);
 
 urlInput.addEventListener("keydown", event => {
     if (event.key === "Enter") {
-    convertLink();
+        convertLink();
     }
 });
 
 clearHistoryBtn.addEventListener("click", clearHistory);
-
-// Start with the map links completely hidden.
 resetOutputLinks();
 renderHistory();
