@@ -7,7 +7,7 @@ const message = document.getElementById("message");
 const apps = document.getElementById("apps");
 
 const googleLink = document.getElementById("google-link");
-const wazeLink = document.getElementById("wazeLink");
+const wazeLink = document.getElementById("waze-link");
 const neshanLink = document.getElementById("neshanLink");
 const baladLink = document.getElementById("baladLink");
 
