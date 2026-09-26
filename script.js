@@ -12,7 +12,7 @@ const neshanLink = document.getElementById("neshan-link");
 const baladLink = document.getElementById("balad-link");
 
 const historyList = document.getElementById("historyList");
-const clearHistoryBtn = document.getElementById("clearHistoryBtn");
+const clearHistoryBtn = document.getElementById("clear-history-btn");
 
 function resetOutputLinks() {
     apps.classList.remove("visible");
