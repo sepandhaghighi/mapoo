@@ -1,18 +1,18 @@
-const STORAGE_KEY = "mapoo_history";
+const STORAGE_KEY = "mapooHistory";
 const MAPOO_VERSION = "0.1";
 
-const urlInput = document.getElementById("urlInput");
-const convertBtn = document.getElementById("convertBtn");
+const urlInput = document.getElementById("url-input");
+const convertBtn = document.getElementById("convert-btn");
 const message = document.getElementById("message");
 const apps = document.getElementById("apps");
 
-const googleLink = document.getElementById("googleLink");
-const wazeLink = document.getElementById("wazeLink");
-const neshanLink = document.getElementById("neshanLink");
-const baladLink = document.getElementById("baladLink");
+const googleLink = document.getElementById("google-link");
+const wazeLink = document.getElementById("waze-link");
+const neshanLink = document.getElementById("neshan-link");
+const baladLink = document.getElementById("balad-link");
 
-const historyList = document.getElementById("historyList");
-const clearHistoryBtn = document.getElementById("clearHistoryBtn");
+const historyList = document.getElementById("history-list");
+const clearHistoryBtn = document.getElementById("clear-history-btn");
 
 function resetOutputLinks() {
     apps.classList.remove("visible");
