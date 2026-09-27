@@ -111,8 +111,8 @@ main {
     outline: none;
     background: #fff;
     color: #0f172a;
-    direction: ltr;
-    text-align: left;
+    direction: rtl;
+    text-align: right;
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
@@ -247,8 +247,8 @@ main {
 }
 
 .history-coordinates {
-    direction: ltr;
-    text-align: left;
+    direction: rtl;
+    text-align: right;
     color: #334155;
     font-size: 14px;
     font-weight: bold;
