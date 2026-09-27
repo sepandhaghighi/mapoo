@@ -188,13 +188,26 @@ function getHistory() {
     }
 }
 
-function saveHistory(input) {
+function normalizeCoordinate(value) {
+    return Number(Number(value).toFixed(6));
+}
+
+function saveHistory(lat, lng) {
     let history = getHistory();
 
-    history = history.filter(item => item.url !== input);
+    const normalizedLat = normalizeCoordinate(lat);
+    const normalizedLng = normalizeCoordinate(lng);
+
+    history = history.filter(item => {
+        return !(
+            Number(item.lat) === normalizedLat &&
+            Number(item.lng) === normalizedLng
+        );
+    });
 
     history.unshift({
-        url: input,
+        lat: normalizedLat,
+        lng: normalizedLng,
         createdAt: Date.now()
     });
 
