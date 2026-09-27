@@ -246,14 +246,13 @@ main {
     flex: 1;
 }
 
-.history-url {
+.history-coordinates {
     direction: ltr;
     text-align: left;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     color: #334155;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
 }
 
 .history-date {
