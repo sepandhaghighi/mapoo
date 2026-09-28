@@ -188,13 +188,26 @@ function getHistory() {
     }
 }
 
-function saveHistory(input) {
+function normalizeCoordinate(value) {
+    return Number(Number(value).toFixed(6));
+}
+
+function saveHistory(lat, lng) {
     let history = getHistory();
 
-    history = history.filter(item => item.url !== input);
+    const normalizedLat = normalizeCoordinate(lat);
+    const normalizedLng = normalizeCoordinate(lng);
+
+    history = history.filter(item => {
+        return !(
+            Number(item.lat) === normalizedLat &&
+            Number(item.lng) === normalizedLng
+        );
+    });
 
     history.unshift({
-        url: input,
+        lat: normalizedLat,
+        lng: normalizedLng,
         createdAt: Date.now()
     });
 
@@ -275,16 +288,15 @@ function renderHistory() {
         const info = document.createElement("div");
         info.className = "history-info";
 
-        const url = document.createElement("div");
-        url.className = "history-url";
-        url.textContent = item.url;
-        url.title = item.url;
+        const coordinates = document.createElement("div");
+        coordinates.className = "history-coordinates";
+        coordinates.textContent = `${item.lat}, ${item.lng}`;
 
         const date = document.createElement("div");
         date.className = "history-date";
         date.textContent = formatDate(item.createdAt);
 
-        info.appendChild(url);
+        info.appendChild(coordinates);
         info.appendChild(date);
 
         const actions = document.createElement("div");
@@ -293,15 +305,28 @@ function renderHistory() {
         const openButton = document.createElement("button");
         openButton.type = "button";
         openButton.className = "history-open";
-        openButton.textContent = "تبدیل";
+        openButton.textContent = "نمایش";
 
         openButton.addEventListener("click", () => {
-            urlInput.value = item.url;
-            convertLink();
+            const lat = Number(item.lat);
+            const lng = Number(item.lng);
+
+            if (!isValidCoordinates(lat, lng)) {
+                showMessage("مختصات ذخیره‌شده معتبر نیست.");
+                return;
+            }
+
+            const links = createMapLinks(lat, lng);
+
+            setOutputLinks(links);
+
+            urlInput.value = `${lat}, ${lng}`;
+
+            showMessage(`مختصات ذخیره‌شده انتخاب شد: ${lat}, ${lng}`, "success");
 
             window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+                top: 0,
+                behavior: "smooth"
             });
         });
 
@@ -352,7 +377,7 @@ function convertLink() {
     const links = createMapLinks(lat, lng);
 
     setOutputLinks(links);
-    saveHistory(input);
+    saveHistory(lat, lng);
 
     showMessage(`مختصات با موفقیت استخراج شد: ${lat}, ${lng}`, "success");
 }
