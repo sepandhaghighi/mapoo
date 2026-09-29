@@ -15,8 +15,12 @@ const historyList = document.getElementById("history-list");
 const clearHistoryBtn = document.getElementById("clear-history-btn");
 const appVersion = document.getElementById("app-version");
 
+function toPersianDigits(value) {
+    return String(value).replace(/\d/g, digit => "۰۱۲۳۴۵۶۷۸۹"[digit]);
+}
+
 function renderAppVersion() {
-    appVersion.textContent = ` · نسخه ${MAPOO_VERSION}`;
+    appVersion.textContent = ` · نسخه ${toPersianDigits(MAPOO_VERSION)}`;
 }
 
 function resetOutputLinks() {
