@@ -13,6 +13,11 @@ const baladLink = document.getElementById("balad-link");
 
 const historyList = document.getElementById("history-list");
 const clearHistoryBtn = document.getElementById("clear-history-btn");
+const appVersion = document.getElementById("app-version");
+
+function renderAppVersion() {
+    appVersion.textContent = ` · نسخه ${MAPOO_VERSION}`;
+}
 
 function resetOutputLinks() {
     apps.classList.remove("visible");
@@ -391,5 +396,6 @@ urlInput.addEventListener("keydown", event => {
 });
 
 clearHistoryBtn.addEventListener("click", clearHistory);
+renderAppVersion();
 resetOutputLinks();
 renderHistory();
