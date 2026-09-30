@@ -19,7 +19,18 @@ Mapoo is designed to make sharing and opening the same location across different
 
 ## Features
 
-TODO
+* Convert location links between supported map services
+* Extract latitude and longitude coordinates from location URLs
+* Generate equivalent links for multiple map platforms
+* Support direct latitude and longitude input
+* Decode URL-encoded location links
+* Save recently converted locations locally
+* Reuse locations from conversion history
+* Delete individual history entries
+* Clear the entire conversion history
+* Responsive design for desktop and mobile devices
+* No backend or server-side processing required
+* Store conversion history locally using browser `localStorage`
 
 
 ## Usage
