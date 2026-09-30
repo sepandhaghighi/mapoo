@@ -33,9 +33,25 @@ Mapoo is designed to make sharing and opening the same location across different
 * Store conversion history locally using browser `localStorage`
 
 
+## Supported Services
+
+Mapoo currently supports the following map services:
+
+* Google Maps
+* Waze
+* Neshan
+* Balad
+
+
 ## Usage
 
-TODO
+1. Open Mapoo.
+2. Paste a location link into the input field.
+3. Click **Convert Link**.
+4. Mapoo extracts the latitude and longitude coordinates.
+5. Open the generated links using any of the supported map services.
+
+Converted locations are automatically saved in your browser's local history. You can reuse or delete saved locations at any time.
 
 
 
