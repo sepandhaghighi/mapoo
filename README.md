@@ -62,7 +62,7 @@ To test Mapoo locally, you can use [Ghps](https://github.com/sepandhaghighi/ghps
 Run:
 
 ```console
-ghps --port 5010
+ghps --port=5010 --auto-open
 ```
 
 Then open your browser and visit:
