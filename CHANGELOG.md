@@ -5,11 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-## [0.1] - 2026-xx-xx
+## [0.1] - 2026-10-04
 ### Added
-- Item1
-- Item2
-- Item3
+- Support Google Maps
+- Support Waze
+- Support Neshan
+- Support Balad
 
 
 [Unreleased]: https://github.com/sepandhaghighi/mapoo/compare/v0.1...main
