@@ -1,5 +1,4 @@
 <div align="center">
-    <img src="https://github.com/sepandhaghighi/mapoo/raw/main/assets/logo.png" alt="Mapoo Logo" width="300">
     <h1>Mapoo: Convert Location Links Between Map Services</h1>
     <br/>
     <a href="https://mapoo.ir"><img src="https://img.shields.io/badge/demo-mapoo.ir-green.svg"></a>
