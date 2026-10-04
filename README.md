@@ -8,7 +8,7 @@
 
 ## Overview
 
-**Mapoo** is a lightweight web application for converting location links between different map services.
+Mapoo is a lightweight web application for converting location links between different map services.
 
 It extracts latitude and longitude coordinates from supported location links and generates equivalent links that can be opened in other supported map services.
 
