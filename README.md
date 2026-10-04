@@ -14,6 +14,13 @@ It extracts latitude and longitude coordinates from supported location links and
 
 Mapoo is designed to make sharing and opening the same location across different map platforms simple, fast, and convenient.
 
+<table>
+	<tr> 
+		<td align="center">Code Quality</td>
+		<td align="center"></td>
+		<td align="center"></td>
+	</tr>
+</table>
 
 
 ## Features
