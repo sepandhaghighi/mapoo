@@ -8,12 +8,19 @@
 
 ## Overview
 
-**Mapoo** is a lightweight web application for converting location links between different map services.
+Mapoo is a lightweight web application for converting location links between different map services.
 
 It extracts latitude and longitude coordinates from supported location links and generates equivalent links that can be opened in other supported map services.
 
 Mapoo is designed to make sharing and opening the same location across different map platforms simple, fast, and convenient.
 
+<table>
+	<tr> 
+		<td align="center">Code Quality</td>
+		<td align="center"><a href="https://www.codefactor.io/repository/github/sepandhaghighi/mapoo"><img src="https://www.codefactor.io/repository/github/sepandhaghighi/mapoo/badge" alt="CodeFactor"></a></td>
+		<td align="center"><a href="https://app.codacy.com/gh/sepandhaghighi/mapoo/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade"><img src="https://app.codacy.com/project/badge/Grade/86ce59acb6bd40cc97646add783cf7c0"></a></td>
+	</tr>
+</table>
 
 
 ## Features
