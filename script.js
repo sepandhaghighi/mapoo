@@ -2,6 +2,7 @@ const STORAGE_KEY = "mapooHistory";
 const MAPOO_VERSION = "0.1";
 
 const urlInput = document.getElementById("url-input");
+const nameInput = document.getElementById("name-input");
 const convertBtn = document.getElementById("convert-btn");
 const message = document.getElementById("message");
 const apps = document.getElementById("apps");
@@ -201,11 +202,12 @@ function normalizeCoordinate(value) {
     return Number(Number(value).toFixed(6));
 }
 
-function saveHistory(lat, lng) {
+function saveHistory(lat, lng, name = "") {
     let history = getHistory();
 
     const normalizedLat = normalizeCoordinate(lat);
     const normalizedLng = normalizeCoordinate(lng);
+    const normalizedName = String(name).trim().slice(0, 100);
 
     history = history.filter(item => {
         return !(
@@ -217,6 +219,7 @@ function saveHistory(lat, lng) {
     history.unshift({
         lat: normalizedLat,
         lng: normalizedLng,
+        name: normalizedName,
         createdAt: Date.now()
     });
 
