@@ -304,6 +304,13 @@ function renderHistory() {
         coordinates.className = "history-coordinates";
         coordinates.textContent = `${item.lat}, ${item.lng}`;
 
+        const name = document.createElement("div");
+        if (item.name) {
+            name.className = "history-name";
+            name.textContent = item.name;
+            info.appendChild(name);
+        }
+
         const date = document.createElement("div");
         date.className = "history-date";
         date.textContent = formatDate(item.createdAt);
@@ -333,6 +340,7 @@ function renderHistory() {
             setOutputLinks(links);
 
             urlInput.value = `${lat}, ${lng}`;
+            nameInput.value = item.name || "";
 
             showMessage(`مختصات ذخیره‌شده انتخاب شد: ${lat}, ${lng}`, "success");
 
@@ -366,6 +374,7 @@ function convertLink() {
     resetOutputLinks();
 
     const input = urlInput.value.trim();
+    const name = nameInput.value.trim();
 
     if (!input) {
         showMessage("لطفاً یک لینک مکان وارد کنید.");
@@ -389,17 +398,20 @@ function convertLink() {
     const links = createMapLinks(lat, lng);
 
     setOutputLinks(links);
-    saveHistory(lat, lng);
+    saveHistory(lat, lng, name);
 
     showMessage(`مختصات با موفقیت استخراج شد: ${lat}, ${lng}`, "success");
+    nameInput.value = "";
 }
 
 convertBtn.addEventListener("click", convertLink);
 
-urlInput.addEventListener("keydown", event => {
-    if (event.key === "Enter") {
-        convertLink();
-    }
+[urlInput, nameInput].forEach(input => {
+    input.addEventListener("keydown", event => {
+        if (event.key === "Enter") {
+            convertLink();
+        }
+    });
 });
 
 clearHistoryBtn.addEventListener("click", clearHistory);

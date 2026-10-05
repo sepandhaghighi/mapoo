@@ -276,6 +276,16 @@ main {
     padding: 7px 4px;
 }
 
+.history-name {
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .history-list {
     display: flex;
     flex-direction: column;
