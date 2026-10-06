@@ -130,7 +130,8 @@ main {
 }
 
 .input-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(180px, 0.45fr) auto;
     gap: 10px;
 }
 
@@ -149,6 +150,24 @@ main {
 }
 
 #url-input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+#name-input {
+    min-width: 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 13px 14px;
+    outline: none;
+    background: #fff;
+    color: #0f172a;
+    direction: rtl;
+    text-align: right;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#name-input:focus {
     border-color: #2563eb;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
@@ -255,6 +274,16 @@ main {
     color: #dc2626;
     font-size: 13px;
     padding: 7px 4px;
+}
+
+.history-name {
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .history-list {
@@ -374,7 +403,7 @@ footer {
     }
 
     .input-row {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
 
     .primary-btn {

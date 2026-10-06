@@ -2,6 +2,7 @@ const STORAGE_KEY = "mapooHistory";
 const MAPOO_VERSION = "0.1";
 
 const urlInput = document.getElementById("url-input");
+const nameInput = document.getElementById("name-input");
 const convertBtn = document.getElementById("convert-btn");
 const message = document.getElementById("message");
 const apps = document.getElementById("apps");
@@ -201,11 +202,12 @@ function normalizeCoordinate(value) {
     return Number(Number(value).toFixed(6));
 }
 
-function saveHistory(lat, lng) {
+function saveHistory(lat, lng, name = "") {
     let history = getHistory();
 
     const normalizedLat = normalizeCoordinate(lat);
     const normalizedLng = normalizeCoordinate(lng);
+    const normalizedName = String(name).trim().slice(0, 100);
 
     history = history.filter(item => {
         return !(
@@ -217,6 +219,7 @@ function saveHistory(lat, lng) {
     history.unshift({
         lat: normalizedLat,
         lng: normalizedLng,
+        name: normalizedName,
         createdAt: Date.now()
     });
 
@@ -301,6 +304,13 @@ function renderHistory() {
         coordinates.className = "history-coordinates";
         coordinates.textContent = `${item.lat}, ${item.lng}`;
 
+        const name = document.createElement("div");
+        if (item.name) {
+            name.className = "history-name";
+            name.textContent = item.name;
+            info.appendChild(name);
+        }
+
         const date = document.createElement("div");
         date.className = "history-date";
         date.textContent = formatDate(item.createdAt);
@@ -330,6 +340,7 @@ function renderHistory() {
             setOutputLinks(links);
 
             urlInput.value = `${lat}, ${lng}`;
+            nameInput.value = item.name || "";
 
             showMessage(`مختصات ذخیره‌شده انتخاب شد: ${lat}, ${lng}`, "success");
 
@@ -363,6 +374,7 @@ function convertLink() {
     resetOutputLinks();
 
     const input = urlInput.value.trim();
+    const name = nameInput.value.trim();
 
     if (!input) {
         showMessage("لطفاً یک لینک مکان وارد کنید.");
@@ -386,17 +398,20 @@ function convertLink() {
     const links = createMapLinks(lat, lng);
 
     setOutputLinks(links);
-    saveHistory(lat, lng);
+    saveHistory(lat, lng, name);
 
     showMessage(`مختصات با موفقیت استخراج شد: ${lat}, ${lng}`, "success");
+    nameInput.value = "";
 }
 
 convertBtn.addEventListener("click", convertLink);
 
-urlInput.addEventListener("keydown", event => {
-    if (event.key === "Enter") {
-        convertLink();
-    }
+[urlInput, nameInput].forEach(input => {
+    input.addEventListener("keydown", event => {
+        if (event.key === "Enter") {
+            convertLink();
+        }
+    });
 });
 
 clearHistoryBtn.addEventListener("click", clearHistory);
