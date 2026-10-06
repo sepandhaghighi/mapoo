@@ -281,6 +281,8 @@ function formatDate(timestamp) {
 function renderHistory() {
     const history = getHistory();
 
+    clearHistoryBtn.disabled = history.length === 0;
+    
     historyList.innerHTML = "";
 
     if (!history.length) {
