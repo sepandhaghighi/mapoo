@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Location name
 ### Changed
 - `README.md` updated
+- Clear history button bug fixed
+- `renderHistory` function modified
 - `saveHistory` function modified
 - `convertLink` function modified
 ## [0.1] - 2026-10-04
