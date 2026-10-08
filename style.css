@@ -87,14 +87,11 @@ header {
 }
 
 .brand-icon {
-    width: 44px;
     height: 44px;
     border-radius: 12px;
-    background: #2563eb;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
 }
 
 .brand h1 {
@@ -386,9 +383,7 @@ footer {
     }
 
     .brand-icon {
-        width: 40px;
         height: 40px;
-        font-size: 20px;
     }
 
     .brand h1 {
