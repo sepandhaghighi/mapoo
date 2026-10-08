@@ -237,7 +237,7 @@ function deleteHistoryItem(index) {
         return;
     }
 
-    const shouldDelete = window.confirm("آیا از حذف این مکان از تاریخچه مطمئن هستید؟");
+    const shouldDelete = window.confirm("آیا از حذف این مورد از تاریخچه اطمینان دارید؟");
 
     if (!shouldDelete) {
         return;
@@ -257,7 +257,7 @@ function clearHistory() {
         return;
     }
 
-    const shouldDelete = window.confirm("آیا می‌خواهید تمام مکان‌های ذخیره‌شده حذف شوند؟");
+    const shouldDelete = window.confirm("آیا از حذف تمام موارد تاریخچه اطمینان دارید؟");
 
     if (!shouldDelete) {
         return;
@@ -288,7 +288,7 @@ function renderHistory() {
     if (!history.length) {
     historyList.innerHTML = `
         <div class="empty-history">
-        هنوز مکانی ذخیره نشده است.
+        هنوز موردی ذخیره نشده است.
         </div>
     `;
 
@@ -379,14 +379,14 @@ function convertLink() {
     const name = nameInput.value.trim();
 
     if (!input) {
-        showMessage("لطفاً یک لینک مکان وارد کنید.");
+        showMessage("لطفاً لینک نقشه را وارد کنید.");
         return;
     }
 
     const coordinates = extractCoordinates(input);
 
     if (!coordinates) {
-        showMessage("مختصات مکان از این لینک قابل استخراج نیست. لطفاً لینک کامل مکان را وارد کنید.");
+        showMessage("امکان استخراج مختصات از این لینک وجود ندارد. لطفاً لینک کامل نقشه یا مختصات جغرافیایی را وارد کنید.");
         return;
     }
 
