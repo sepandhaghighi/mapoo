@@ -403,7 +403,6 @@ function convertLink() {
     saveHistory(lat, lng, name);
 
     showMessage(`مختصات با موفقیت استخراج شد: ${lat}, ${lng}`, "success");
-    nameInput.value = "";
 }
 
 convertBtn.addEventListener("click", convertLink);
