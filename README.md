@@ -78,6 +78,10 @@ Then open your browser and visit:
 http://localhost:5010
 ```
 
+## Dependencies
+
+- [Vazirmatn Font](https://fonts.google.com/specimen/Vazirmatn)
+
 ## Issues & Bug Reports
 
 Just fill an issue and describe it. We'll check it ASAP! or send an email to [info@mapoo.ir](mailto:info@mapoo.ir "info@mapoo.ir"). 
