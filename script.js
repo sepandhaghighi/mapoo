@@ -379,7 +379,7 @@ function convertLink() {
     const name = nameInput.value.trim();
 
     if (!input) {
-        showMessage("لطفاً لینک نقشه را وارد کنید.");
+        showMessage("لطفاً لینک نقشه یا مختصات جغرافیایی را وارد کنید.");
         return;
     }
 
