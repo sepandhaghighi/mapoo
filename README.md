@@ -54,7 +54,7 @@ Mapoo currently supports the following map services:
 
 1. Open Mapoo.
 2. Paste a location link into the input field.
-3. Click **Convert Link**.
+3. Click **Convert**.
 4. Mapoo extracts the latitude and longitude coordinates.
 5. Open the generated links using any of the supported map services.
 
@@ -77,6 +77,10 @@ Then open your browser and visit:
 ```console
 http://localhost:5010
 ```
+
+## Dependencies
+
+- [Vazirmatn Font](https://fonts.google.com/specimen/Vazirmatn)
 
 ## Issues & Bug Reports
 

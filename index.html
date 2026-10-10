@@ -8,23 +8,23 @@
     <link rel="canonical" href="https://mapoo.ir">
     <link rel="manifest" href="site.webmanifest">
     <meta name="apple-mobile-web-app-title" content="مپو">
-    <meta name="description" content="مپو ابزاری ساده و سریع برای استخراج مختصات از لینک مکان و تبدیل آن به لینک قابل استفاده در سرویس‌های مختلف نقشه است.">
+    <meta name="description" content="مپو؛ ابزاری ساده و سریع برای استخراج مختصات از لینک نقشه و ساخت لینک قابل استفاده در سرویس‌های مختلف نقشه.">
     <meta name="author" content="Sepand Haghighi">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="مپو: تبدیل لینک مکان بین سرویس‌های نقشه">
-    <meta property="og:description" content="مپو ابزاری ساده و سریع برای استخراج مختصات از لینک مکان و تبدیل آن به لینک قابل استفاده در سرویس‌های مختلف نقشه است.">
+    <meta property="og:title" content="مپو | تبدیل لینک نقشه بین سرویس‌های مختلف">
+    <meta property="og:description" content="مپو؛ ابزاری ساده و سریع برای استخراج مختصات از لینک نقشه و ساخت لینک قابل استفاده در سرویس‌های مختلف نقشه.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mapoo.ir">
     <meta property="og:image" content="https://mapoo.ir/assets/og-preview.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="مپو: تبدیل لینک مکان بین سرویس‌های نقشه">
-    <meta name="twitter:description" content="مپو ابزاری ساده و سریع برای استخراج مختصات از لینک مکان و تبدیل آن به لینک قابل استفاده در سرویس‌های مختلف نقشه است.">
+    <meta name="twitter:title" content="مپو | تبدیل لینک نقشه بین سرویس‌های مختلف">
+    <meta name="twitter:description" content="مپو؛ ابزاری ساده و سریع برای استخراج مختصات از لینک نقشه و ساخت لینک قابل استفاده در سرویس‌های مختلف نقشه.">
     <meta name="twitter:image" content="https://mapoo.ir/assets/og-preview.png">
     <meta name="theme-color" content="#0f172a">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link href="style.css" rel="stylesheet" type="text/css">
-    <title>مپو: تبدیل لینک مکان بین سرویس‌های نقشه</title>
+    <title>مپو | تبدیل لینک نقشه بین سرویس‌های مختلف</title>
   </head>
 
   <body>
@@ -35,7 +35,7 @@
             <img src="assets/logo.png" class="brand-icon" alt="Mapoo Logo">
             <div>
               <h1>مپو</h1>
-              <p>تبدیل لینک مکان بین سرویس‌های نقشه</p>
+              <p>تبدیل لینک نقشه بین سرویس‌های مختلف</p>
             </div>
           </div>
         </div>
@@ -45,11 +45,11 @@
         <div class="container">
 
           <section class="card">
-            <label class="input-label" for="url-input">لینک را وارد کنید</label>
+            <label class="input-label" for="url-input">لینک نقشه یا مختصات جغرافیایی را وارد کنید</label>
             <div class="input-row">
-              <input id="url-input" type="text" inputmode="url" autocomplete="off" placeholder="مثلاً لینک Google Maps یا Neshan" dir="rtl"/>
+              <input id="url-input" type="text" inputmode="url" autocomplete="off" placeholder="لینک نقشه یا مختصات جغرافیایی" dir="rtl"/>
               <input id="name-input" type="text" autocomplete="off" placeholder="نام مکان (اختیاری)" dir="rtl" maxlength="100"/>
-              <button id="convert-btn" class="primary-btn" type="button">تبدیل لینک</button>
+              <button id="convert-btn" class="primary-btn" type="button">تبدیل</button>
             </div>
 
             <div id="message" class="message"></div>
@@ -79,8 +79,8 @@
 
           <section class="card">
             <div class="section-header">
-              <h2 class="section-title">مکان‌های ذخیره‌شده</h2>
-              <button id="clear-history-btn" class="clear-btn" type="button" disabled>پاک کردن همه</button>
+              <h2 class="section-title">تاریخچه</h2>
+              <button id="clear-history-btn" class="clear-btn" type="button" disabled>حذف همه</button>
             </div>
             <div id="history-list" class="history-list"></div>
           </section>
