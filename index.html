@@ -23,6 +23,7 @@
     <meta name="theme-color" content="#0f172a">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link href="libs/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="style.css" rel="stylesheet" type="text/css">
     <title>مپو | تبدیل لینک نقشه بین سرویس‌های مختلف</title>
   </head>
@@ -49,7 +50,10 @@
             <div class="input-row">
               <input id="url-input" type="text" inputmode="url" autocomplete="off" placeholder="لینک نقشه یا مختصات جغرافیایی" dir="rtl"/>
               <input id="name-input" type="text" autocomplete="off" placeholder="نام مکان (اختیاری)" dir="rtl" maxlength="100"/>
-              <button id="convert-btn" class="primary-btn" type="button">تبدیل</button>
+              <button id="convert-btn" class="primary-btn" type="button">
+                <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
+                تبدیل
+              </button>
             </div>
 
             <div id="message" class="message"></div>
@@ -57,22 +61,34 @@
             <div id="apps" class="apps">
               <div class="app-card">
                 <span class="app-name">Google Maps</span>
-                <a id="google-link" class="app-link" href="#" target="_blank" rel="noopener">باز کردن</a>
+                <a id="google-link" class="app-link" href="#" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                  باز کردن
+                </a>
               </div>
 
               <div class="app-card">
                 <span class="app-name">Waze</span>
-                <a id="waze-link" class="app-link" href="#" target="_blank" rel="noopener">باز کردن</a>
+                <a id="waze-link" class="app-link" href="#" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                  باز کردن
+                </a>
               </div>
 
               <div class="app-card">
                 <span class="app-name">Neshan</span>
-                <a id="neshan-link" class="app-link" href="#" target="_blank" rel="noopener">باز کردن</a>
+                <a id="neshan-link" class="app-link" href="#" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                  باز کردن
+                </a>
               </div>
 
               <div class="app-card">
                 <span class="app-name">Balad</span>
-                <a id="balad-link" class="app-link" href="#" target="_blank" rel="noopener">باز کردن</a>
+                <a id="balad-link" class="app-link" href="#" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                  باز کردن
+                </a>
               </div>
             </div>
           </section>
@@ -80,7 +96,10 @@
           <section class="card">
             <div class="section-header">
               <h2 class="section-title">تاریخچه</h2>
-              <button id="clear-history-btn" class="clear-btn" type="button" disabled>حذف همه</button>
+              <button id="clear-history-btn" class="clear-btn" type="button" disabled>
+                <i class="fa-regular fa-trash-can" aria-hidden="true"></i>
+                حذف همه
+              </button>
             </div>
             <div id="history-list" class="history-list"></div>
           </section>
