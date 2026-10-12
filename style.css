@@ -170,6 +170,10 @@ main {
 }
 
 .primary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     border: 0;
     border-radius: 12px;
     padding: 0 20px;
@@ -237,7 +241,9 @@ main {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
     min-height: 40px;
+    min-width: 100px;
     padding: 8px 13px;
     border-radius: 9px;
     background: #f1f5f9;
@@ -245,6 +251,7 @@ main {
     text-decoration: none;
     font-size: 13px;
     white-space: nowrap;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 .app-link.active {
@@ -266,6 +273,10 @@ main {
 }
 
 .clear-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     border: 0;
     background: transparent;
     color: #dc2626;
@@ -332,13 +343,21 @@ main {
     flex-shrink: 0;
 }
 
-.history-open, .history-delete {
+.history-open,
+.history-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     border: 0;
     border-radius: 9px;
     min-height: 38px;
     padding: 7px 11px;
     font-size: 12px;
+    font-family: inherit;
     white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 .history-open {
@@ -369,6 +388,45 @@ footer {
 .footer-name {
     color: #475569;
     font-weight: bold;
+}
+
+.primary-btn i,
+.clear-btn i,
+.app-link i,
+.history-open i,
+.history-delete i {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.primary-btn i {
+    font-size: 15px;
+}
+
+.app-link:hover {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.history-open:hover {
+    background: #dbeafe;
+}
+
+.history-delete:hover {
+    background: #fee2e2;
+}
+
+.clear-btn:not(:disabled):hover {
+    color: #b91c1c;
+}
+
+.primary-btn:focus-visible,
+.clear-btn:focus-visible,
+.app-link:focus-visible,
+.history-open:focus-visible,
+.history-delete:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 3px;
 }
 
 @media (max-width: 600px) {
@@ -419,10 +477,6 @@ footer {
         min-height: 64px;
     }
 
-    .app-link {
-        min-width: 100px;
-    }
-
     .history-item {
         align-items: flex-start;
     }
@@ -452,65 +506,3 @@ footer {
         width: auto;
     }
 }
-
-.primary-btn,
-.clear-btn,
-.app-link,
-.history-open,
-.history-delete {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.primary-btn i,
-.clear-btn i,
-.app-link i,
-.history-open i,
-.history-delete i {
-    font-size: 14px;
-    line-height: 1;
-}
-
-.primary-btn i {
-    font-size: 15px;
-}
-
-.app-link {
-    transition: background-color 0.2s, color 0.2s;
-}
-
-.app-link:hover {
-    background: #dbeafe;
-    color: #1d4ed8;
-}
-
-.history-open,
-.history-delete {
-    font-family: inherit;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.history-open:hover {
-    background: #dbeafe;
-}
-
-.history-delete:hover {
-    background: #fee2e2;
-}
-
-.clear-btn:not(:disabled):hover {
-    color: #b91c1c;
-}
-
-.primary-btn:focus-visible,
-.clear-btn:focus-visible,
-.app-link:focus-visible,
-.history-open:focus-visible,
-.history-delete:focus-visible {
-    outline: 2px solid #2563eb;
-    outline-offset: 3px;
-}
-
