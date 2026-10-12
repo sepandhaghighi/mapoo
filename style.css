@@ -343,8 +343,7 @@ main {
     flex-shrink: 0;
 }
 
-.history-open,
-.history-delete {
+.history-open, .history-delete {
     display: inline-flex;
     align-items: center;
     justify-content: center;
