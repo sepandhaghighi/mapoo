@@ -453,7 +453,7 @@ function convertLink() {
     setOutputLinks(links);
     saveHistory(lat, lng, name);
     updatePageUrl(lat, lng, name);
-    
+
     showMessage(`مختصات با موفقیت استخراج شد: ${lat}, ${lng}`, "success");
 }
 
@@ -471,3 +471,4 @@ clearHistoryBtn.addEventListener("click", clearHistory);
 renderAppVersion();
 resetOutputLinks();
 renderHistory();
+loadLocationFromUrl();
