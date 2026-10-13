@@ -326,7 +326,8 @@ function renderHistory() {
         const openButton = document.createElement("button");
         openButton.type = "button";
         openButton.className = "history-open";
-        openButton.textContent = "نمایش";
+        openButton.innerHTML = '<i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> نمایش';
+
 
         openButton.addEventListener("click", () => {
             const lat = Number(item.lat);
@@ -355,7 +356,7 @@ function renderHistory() {
         const deleteButton = document.createElement("button");
         deleteButton.type = "button";
         deleteButton.className = "history-delete";
-        deleteButton.textContent = "حذف";
+        deleteButton.innerHTML = '<i class="fa-regular fa-trash-can" aria-hidden="true"></i> حذف';
 
         deleteButton.addEventListener("click", () => {
             deleteHistoryItem(index);

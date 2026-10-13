@@ -81,6 +81,7 @@ http://localhost:5010
 ## Dependencies
 
 - [Vazirmatn Font](https://fonts.google.com/specimen/Vazirmatn)
+- [Font Awesome](https://fontawesome.com/) v7.2.0
 
 ## Issues & Bug Reports
 
