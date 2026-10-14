@@ -394,6 +394,10 @@ function renderHistory() {
             clearMessage();
             resetOutputLinks();
 
+            const locationLabel = item.name || `${lat}, ${lng}`;
+
+            showMessage(`«${locationLabel}» بارگذاری شد.`, "success");
+
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
