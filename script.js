@@ -388,14 +388,11 @@ function renderHistory() {
                 return;
             }
 
-            const links = createMapLinks(lat, lng);
-
-            setOutputLinks(links);
-
             urlInput.value = `${lat}, ${lng}`;
             nameInput.value = item.name || "";
 
-            showMessage(`مختصات ذخیره‌شده انتخاب شد: ${lat}, ${lng}`, "success");
+            clearMessage();
+            resetOutputLinks();
 
             window.scrollTo({
                 top: 0,
