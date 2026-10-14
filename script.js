@@ -163,6 +163,56 @@ function isValidCoordinates(lat, lng) {
     );
 }
 
+function updatePageUrl(lat, lng, name = "") {
+    const url = new URL(window.location.href);
+
+    url.searchParams.set("lat", String(lat));
+    url.searchParams.set("lng", String(lng));
+
+    const normalizedName = String(name).trim().slice(0, 100);
+
+    if (normalizedName) {
+        url.searchParams.set("name", normalizedName);
+    } else {
+        url.searchParams.delete("name");
+    }
+
+    window.history.replaceState(window.history.state, "", url);
+}
+
+function loadLocationFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+
+    if (!params.has("lat") || !params.has("lng")) {
+        return;
+    }
+
+    const latValue = params.get("lat");
+    const lngValue = params.get("lng");
+
+    if (
+        latValue === null ||
+        lngValue === null ||
+        latValue.trim() === "" ||
+        lngValue.trim() === ""
+    ) {
+        showMessage("پارامترهای مختصات در لینک معتبر نیستند.");
+        return;
+    }
+
+    const lat = Number(latValue);
+    const lng = Number(lngValue);
+    const name = (params.get("name") || "").trim().slice(0, 100);
+
+    if (!isValidCoordinates(lat, lng)) {
+        showMessage("مختصات واردشده در لینک معتبر نیست.");
+        return;
+    }
+
+    urlInput.value = `${lat}, ${lng}`;
+    nameInput.value = name;
+}
+
 function createMapLinks(lat, lng) {
     return {
         google: `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`,
@@ -402,6 +452,7 @@ function convertLink() {
 
     setOutputLinks(links);
     saveHistory(lat, lng, name);
+    updatePageUrl(lat, lng, name);
 
     showMessage(`مختصات با موفقیت استخراج شد: ${lat}, ${lng}`, "success");
 }
@@ -420,3 +471,4 @@ clearHistoryBtn.addEventListener("click", clearHistory);
 renderAppVersion();
 resetOutputLinks();
 renderHistory();
+loadLocationFromUrl();
