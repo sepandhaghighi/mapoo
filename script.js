@@ -451,8 +451,10 @@ function convertLink() {
     saveHistory(lat, lng, name);
     updatePageUrl(lat, lng, name);
 
-    showMessage(`مختصات با موفقیت استخراج شد: ${lat}, ${lng}`, "success");
-}
+    const locationLabel = name || `${lat}, ${lng}`;
+
+    showMessage(`«${locationLabel}» با موفقیت شناسایی شد.`, "success");
+    }
 
 convertBtn.addEventListener("click", convertLink);
 
