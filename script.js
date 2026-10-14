@@ -454,7 +454,7 @@ function convertLink() {
     const locationLabel = name || `${lat}, ${lng}`;
 
     showMessage(`مختصات «${locationLabel}» با موفقیت شناسایی شد.`, "success");
-    }
+}
 
 convertBtn.addEventListener("click", convertLink);
 
