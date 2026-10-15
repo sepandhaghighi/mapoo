@@ -463,8 +463,8 @@ function convertLink() {
     saveHistory(lat, lng, name);
     updatePageUrl(lat, lng, name);
 
-    const locationLabel = name ? `مکان «${name}»` : "مکان موردنظر";
-    showMessage(`${locationLabel} با موفقیت استخراج شد. عرض جغرافیایی: ${lat}، طول جغرافیایی: ${lng}`, "success");
+    const locationLabel = name ? `«${name}»` : "مکان موردنظر";
+    showMessage(`${locationLabel} با موفقیت شناسایی شد. عرض جغرافیایی: ${lat}، طول جغرافیایی: ${lng}`, "success");
 
 }
 
