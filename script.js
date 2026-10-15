@@ -451,8 +451,9 @@ function convertLink() {
     saveHistory(lat, lng, name);
     updatePageUrl(lat, lng, name);
 
-    const locationLabel = name || `${lat}, ${lng}`;
-    showMessage(`مختصات «${locationLabel}» با موفقیت استخراج شد.`, "success");
+    const locationLabel = name ? `مکان «${name}»` : "مکان موردنظر";
+    showMessage(`${locationLabel} با موفقیت استخراج شد. عرض جغرافیایی: ${lat}، طول جغرافیایی: ${lng}`, "success");
+
 }
 
 convertBtn.addEventListener("click", convertLink);
