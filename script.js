@@ -352,9 +352,21 @@ function renderHistory() {
         const info = document.createElement("div");
         info.className = "history-info";
 
+
         const coordinates = document.createElement("div");
         coordinates.className = "history-coordinates";
-        coordinates.textContent = `${item.lat}, ${item.lng}`;
+
+        const latitude = document.createElement("div");
+        latitude.className = "coordinate-line";
+        latitude.textContent = `عرض جغرافیایی: ${item.lat}`;
+
+        const longitude = document.createElement("div");
+        longitude.className = "coordinate-line";
+        longitude.textContent = `طول جغرافیایی: ${item.lng}`;
+
+        coordinates.appendChild(latitude);
+        coordinates.appendChild(longitude);
+
 
         const name = document.createElement("div");
         if (item.name) {
