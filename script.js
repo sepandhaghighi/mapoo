@@ -452,8 +452,7 @@ function convertLink() {
     updatePageUrl(lat, lng, name);
 
     const locationLabel = name || `${lat}, ${lng}`;
-
-    showMessage(`مختصات «${locationLabel}» با موفقیت شناسایی شد.`, "success");
+    showMessage(`مختصات «${locationLabel}» با موفقیت استخراج شد.`, "success");
 }
 
 convertBtn.addEventListener("click", convertLink);
