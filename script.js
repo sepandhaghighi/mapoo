@@ -376,7 +376,7 @@ function renderHistory() {
         const openButton = document.createElement("button");
         openButton.type = "button";
         openButton.className = "history-open";
-        openButton.innerHTML = '<i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> نمایش';
+        openButton.innerHTML = '<i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> بارگذاری';
 
 
         openButton.addEventListener("click", () => {
@@ -388,14 +388,11 @@ function renderHistory() {
                 return;
             }
 
-            const links = createMapLinks(lat, lng);
-
-            setOutputLinks(links);
-
             urlInput.value = `${lat}, ${lng}`;
             nameInput.value = item.name || "";
 
-            showMessage(`مختصات ذخیره‌شده انتخاب شد: ${lat}, ${lng}`, "success");
+            clearMessage();
+            resetOutputLinks();
 
             window.scrollTo({
                 top: 0,
@@ -454,7 +451,8 @@ function convertLink() {
     saveHistory(lat, lng, name);
     updatePageUrl(lat, lng, name);
 
-    showMessage(`مختصات با موفقیت استخراج شد: ${lat}, ${lng}`, "success");
+    const locationLabel = name || `${lat}, ${lng}`;
+    showMessage(`مختصات «${locationLabel}» با موفقیت استخراج شد.`, "success");
 }
 
 convertBtn.addEventListener("click", convertLink);
