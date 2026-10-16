@@ -352,9 +352,21 @@ function renderHistory() {
         const info = document.createElement("div");
         info.className = "history-info";
 
+
         const coordinates = document.createElement("div");
         coordinates.className = "history-coordinates";
-        coordinates.textContent = `${item.lat}, ${item.lng}`;
+
+        const latitude = document.createElement("div");
+        latitude.className = "coordinate-line";
+        latitude.textContent = `عرض جغرافیایی: ${item.lat}`;
+
+        const longitude = document.createElement("div");
+        longitude.className = "coordinate-line";
+        longitude.textContent = `طول جغرافیایی: ${item.lng}`;
+
+        coordinates.appendChild(latitude);
+        coordinates.appendChild(longitude);
+
 
         const name = document.createElement("div");
         if (item.name) {
@@ -451,8 +463,9 @@ function convertLink() {
     saveHistory(lat, lng, name);
     updatePageUrl(lat, lng, name);
 
-    const locationLabel = name || `${lat}, ${lng}`;
-    showMessage(`مختصات «${locationLabel}» با موفقیت استخراج شد.`, "success");
+    const locationLabel = name ? `«${name}»` : "مکان موردنظر";
+    showMessage(`${locationLabel} با موفقیت شناسایی شد. عرض جغرافیایی: ${lat}، طول جغرافیایی: ${lng}`, "success");
+
 }
 
 convertBtn.addEventListener("click", convertLink);
