@@ -17,7 +17,9 @@ const clearHistoryBtn = document.getElementById("clear-history-btn");
 const appVersion = document.getElementById("app-version");
 
 function toPersianDigits(value) {
-    return String(value).replace(/\d/g, digit => "۰۱۲۳۴۵۶۷۸۹"[digit]);
+    return String(value)
+        .replace(/\d/g, digit => "۰۱۲۳۴۵۶۷۸۹"[digit])
+        .replace(/\./g, "٫");
 }
 
 function renderAppVersion() {
