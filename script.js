@@ -17,7 +17,16 @@ const clearHistoryBtn = document.getElementById("clear-history-btn");
 const appVersion = document.getElementById("app-version");
 
 function toPersianDigits(value) {
-    return String(value).replace(/\d/g, digit => "۰۱۲۳۴۵۶۷۸۹"[digit]);
+    return String(value)
+        .replace(/\d/g, digit => "۰۱۲۳۴۵۶۷۸۹"[digit])
+        .replace(/\./g, "٫");
+}
+
+function formatCoordinates(lat, lng) {
+    return {
+        lat: toPersianDigits(lat),
+        lng: toPersianDigits(lng)
+    };
 }
 
 function renderAppVersion() {
@@ -346,6 +355,7 @@ function renderHistory() {
     }
 
     history.forEach((item, index) => {
+        const formatted = formatCoordinates(item.lat, item.lng);
         const row = document.createElement("div");
         row.className = "history-item";
 
@@ -358,11 +368,11 @@ function renderHistory() {
 
         const latitude = document.createElement("div");
         latitude.className = "coordinate-line";
-        latitude.textContent = `عرض جغرافیایی: ${item.lat}`;
+        latitude.textContent = `عرض جغرافیایی: ${formatted.lat}`;
 
         const longitude = document.createElement("div");
         longitude.className = "coordinate-line";
-        longitude.textContent = `طول جغرافیایی: ${item.lng}`;
+        longitude.textContent = `طول جغرافیایی: ${formatted.lng}`;
 
         coordinates.appendChild(latitude);
         coordinates.appendChild(longitude);
@@ -464,7 +474,8 @@ function convertLink() {
     updatePageUrl(lat, lng, name);
 
     const locationLabel = name ? `«${name}»` : "مکان موردنظر";
-    showMessage(`${locationLabel} با موفقیت شناسایی شد. عرض جغرافیایی: ${lat}، طول جغرافیایی: ${lng}`, "success");
+    const formatted = formatCoordinates(lat, lng);
+    showMessage(`${locationLabel} با موفقیت شناسایی شد. عرض جغرافیایی: ${formatted.lat}، طول جغرافیایی: ${formatted.lng}`, "success");
 
 }
 
