@@ -22,6 +22,13 @@ function toPersianDigits(value) {
         .replace(/\./g, "٫");
 }
 
+function formatCoordinates(lat, lng) {
+    return {
+        lat: toPersianDigits(lat),
+        lng: toPersianDigits(lng)
+    };
+}
+
 function renderAppVersion() {
     appVersion.textContent = ` · نسخه ${toPersianDigits(MAPOO_VERSION)}`;
 }
