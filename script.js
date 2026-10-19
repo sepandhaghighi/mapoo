@@ -42,6 +42,8 @@ function resetOutputLinks() {
         link.href = "#";
         link.classList.remove("active");
     });
+
+    resetPageUrl();
 }
 
 function showMessage(text, type = "error") {
