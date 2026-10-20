@@ -42,8 +42,6 @@ function resetOutputLinks() {
         link.href = "#";
         link.classList.remove("active");
     });
-
-    resetPageUrl();
 }
 
 function showMessage(text, type = "error") {
@@ -427,6 +425,7 @@ function renderHistory() {
 
             clearMessage();
             resetOutputLinks();
+            resetPageUrl();
 
             window.scrollTo({
                 top: 0,
