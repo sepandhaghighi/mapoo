@@ -189,6 +189,16 @@ function updatePageUrl(lat, lng, name = "") {
     window.history.replaceState(window.history.state, "", url);
 }
 
+function resetPageUrl() {
+    const url = new URL(window.location.href);
+
+    url.searchParams.delete("lat");
+    url.searchParams.delete("lng");
+    url.searchParams.delete("name");
+
+    window.history.replaceState(window.history.state, "", url);
+}
+
 function loadLocationFromUrl() {
     const params = new URLSearchParams(window.location.search);
 
@@ -415,6 +425,7 @@ function renderHistory() {
 
             clearMessage();
             resetOutputLinks();
+            resetPageUrl();
 
             window.scrollTo({
                 top: 0,
