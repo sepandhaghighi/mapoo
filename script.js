@@ -11,6 +11,7 @@ const googleLink = document.getElementById("google-link");
 const wazeLink = document.getElementById("waze-link");
 const neshanLink = document.getElementById("neshan-link");
 const baladLink = document.getElementById("balad-link");
+const osmLink = document.getElementById("osm-link");
 
 const historyList = document.getElementById("history-list");
 const clearHistoryBtn = document.getElementById("clear-history-btn");
@@ -36,7 +37,7 @@ function renderAppVersion() {
 function resetOutputLinks() {
     apps.classList.remove("visible");
 
-    const links = [googleLink, wazeLink, neshanLink, baladLink];
+    const links = [googleLink, wazeLink, neshanLink, baladLink, osmLink];
 
     links.forEach(link => {
         link.href = "#";
@@ -76,6 +77,17 @@ function normalizeInput(value) {
 
 function extractCoordinates(input) {
     const value = normalizeInput(input);
+
+    const osm = value.match(/[?&]mlat=(-?\d+(?:\.\d+)?).*?[?&]mlon=(-?\d+(?:\.\d+)?)/i) || value.match(/[?&]mlon=(-?\d+(?:\.\d+)?).*?[?&]mlat=(-?\d+(?:\.\d+)?)/i);
+
+    if (osm) {
+        const params = new URLSearchParams(value.startsWith("http") ? new URL(value).search : value.split("#")[0].replace(/^.*\?/, ""));
+        const lat = Number(params.get("mlat"));
+        const lng = Number(params.get("mlon"));
+        if (Number.isFinite(lat) && Number.isFinite(lng)) {
+            return { lat, lng };
+        }
+    }
 
     const neshanHash = value.match(/#c(-?\d+(?:\.\d+)?)-(-?\d+(?:\.\d+)?)(?:-\d+(?:\.\d+)?z)?(?:-\d+p)?/i);
 
