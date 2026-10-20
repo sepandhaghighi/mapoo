@@ -252,7 +252,9 @@ function createMapLinks(lat, lng) {
 
         neshan: `https://neshan.org/maps/share/${lat},${lng}`,
 
-        balad: `https://balad.ir/location?latitude=${lat}&longitude=${lng}&zoom=16.5`
+        balad: `https://balad.ir/location?latitude=${lat}&longitude=${lng}&zoom=16.5`,
+
+        osm: `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=16/${lat}/${lng}`
     };
 }
 
