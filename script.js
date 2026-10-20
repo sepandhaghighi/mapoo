@@ -263,11 +263,13 @@ function setOutputLinks(links) {
     wazeLink.href = links.waze;
     neshanLink.href = links.neshan;
     baladLink.href = links.balad;
+    osmLink.href = links.osm;
 
     googleLink.classList.add("active");
     wazeLink.classList.add("active");
     neshanLink.classList.add("active");
     baladLink.classList.add("active");
+    osmLink.classList.add("active");
 
     apps.classList.add("visible");
 }
