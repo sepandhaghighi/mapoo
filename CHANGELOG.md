@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `convertLink` function modified
 - `renderHistory` function modified
 - `toPersianDigits` function modified
+- `README.md` updated
 ## [0.3] - 2026-10-17
 ### Added
 - Icons
