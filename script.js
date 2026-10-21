@@ -78,13 +78,15 @@ function normalizeInput(value) {
 function extractCoordinates(input) {
     const value = normalizeInput(input);
 
-    const osm = value.match(/[?&]mlat=(-?\d+(?:\.\d+)?).*?[?&]mlon=(-?\d+(?:\.\d+)?)/i) || value.match(/[?&]mlon=(-?\d+(?:\.\d+)?).*?[?&]mlat=(-?\d+(?:\.\d+)?)/i);
+    const osmLatFirst = value.match(/[?&]mlat=(-?\d+(?:\.\d+)?)(?:&|#|$)/);
 
-    if (osm) {
-        const params = new URLSearchParams(value.startsWith("http") ? new URL(value).search : value.split("#")[0].replace(/^.*\?/, ""));
-        const lat = Number(params.get("mlat"));
-        const lng = Number(params.get("mlon"));
-        if (Number.isFinite(lat) && Number.isFinite(lng)) {
+    const osmLonFirst = value.match(/[?&]mlon=(-?\d+(?:\.\d+)?)(?:&|#|$)/);
+
+    if (osmLatFirst && osmLonFirst) {
+        const lat = Number(osmLatFirst[1]);
+        const lng = Number(osmLonFirst[1]);
+
+        if (isValidCoordinates(lat, lng)) {
             return { lat, lng };
         }
     }
