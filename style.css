@@ -598,14 +598,6 @@ footer {
     outline-offset: -2px;
 }
 
-.preview-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 14px 16px;
-}
-
 .preview-expand-btn:focus-visible {
     outline: 2px solid #2563eb;
     outline-offset: 3px;
@@ -627,11 +619,5 @@ footer {
 
     .location-preview.is-expanded .preview-map {
         height: 360px;
-    }
-
-    .preview-footer {
-        align-items: stretch;
-        flex-direction: column;
-        padding: 13px;
     }
 }
