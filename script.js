@@ -20,7 +20,6 @@ const appVersion = document.getElementById("app-version");
 const locationPreview = document.getElementById("location-preview");
 const previewLocationName = document.getElementById("preview-location-name");
 const previewExpandBtn = document.getElementById("preview-expand-btn");
-const copyCoordinatesBtn = document.getElementById("copy-coordinates-btn");
 
 let previewMap = null;
 let previewMarker = null;
@@ -554,19 +553,6 @@ previewExpandBtn.addEventListener("click", () => {
     setPreviewExpanded(
         previewExpandBtn.getAttribute("aria-expanded") !== "true"
     );
-});
-
-copyCoordinatesBtn.addEventListener("click", async () => {
-    if (!currentPreviewCoordinates) return;
-
-    const { lat, lng } = currentPreviewCoordinates;
-
-    try {
-        await navigator.clipboard.writeText(`${lat}, ${lng}`);
-        showMessage("مختصات با موفقیت کپی شد.", "success");
-    } catch {
-        showMessage("کپی خودکار امکان‌پذیر نیست. مختصات را دستی کپی کنید.");
-    }
 });
 
 function convertLink() {

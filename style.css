@@ -606,29 +606,7 @@ footer {
     padding: 14px 16px;
 }
 
-.copy-coordinates-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    min-height: 40px;
-    padding: 8px 12px;
-    flex-shrink: 0;
-    border: 1px solid #dbeafe;
-    border-radius: 10px;
-    background: #eff6ff;
-    color: #1d4ed8;
-    font: inherit;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-.copy-coordinates-btn:hover {
-    background: #dbeafe;
-}
-
-.preview-expand-btn:focus-visible,
-.copy-coordinates-btn:focus-visible {
+.preview-expand-btn:focus-visible {
     outline: 2px solid #2563eb;
     outline-offset: 3px;
 }
@@ -655,9 +633,5 @@ footer {
         align-items: stretch;
         flex-direction: column;
         padding: 13px;
-    }
-
-    .copy-coordinates-btn {
-        width: 100%;
     }
 }
