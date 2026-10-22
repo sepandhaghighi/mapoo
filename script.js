@@ -23,7 +23,6 @@ const previewExpandBtn = document.getElementById("preview-expand-btn");
 
 let previewMap = null;
 let previewMarker = null;
-let currentPreviewCoordinates = null;
 
 function toPersianDigits(value) {
     return String(value)
@@ -47,7 +46,6 @@ function resetOutputLinks() {
 
     locationPreview.hidden = true;
     locationPreview.classList.remove("is-expanded");
-    currentPreviewCoordinates = null;
 
     previewExpandBtn.setAttribute("aria-expanded", "false");
     previewExpandBtn.setAttribute("aria-label", "نمایش نقشه در اندازه بزرگ‌تر");
@@ -513,10 +511,8 @@ function initializePreviewMap(lat, lng) {
 }
 
 function renderLocationPreview(lat, lng, name = "") {
-    currentPreviewCoordinates = { lat, lng };
 
-    previewLocationName.textContent =
-        name.trim() || "موقعیت شناسایی‌شده";
+    previewLocationName.textContent = name.trim() || "موقعیت شناسایی‌شده";
 
     locationPreview.hidden = false;
     setPreviewExpanded(false);
