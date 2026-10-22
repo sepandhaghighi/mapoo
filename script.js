@@ -19,7 +19,6 @@ const appVersion = document.getElementById("app-version");
 
 const locationPreview = document.getElementById("location-preview");
 const previewLocationName = document.getElementById("preview-location-name");
-const previewCoordinates = document.getElementById("preview-coordinates");
 const previewExpandBtn = document.getElementById("preview-expand-btn");
 const copyCoordinatesBtn = document.getElementById("copy-coordinates-btn");
 
@@ -519,8 +518,6 @@ function renderLocationPreview(lat, lng, name = "") {
 
     previewLocationName.textContent =
         name.trim() || "موقعیت شناسایی‌شده";
-
-    previewCoordinates.textContent = `${lat}, ${lng}`;
 
     locationPreview.hidden = false;
     setPreviewExpanded(false);

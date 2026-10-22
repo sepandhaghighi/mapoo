@@ -606,27 +606,6 @@ footer {
     padding: 14px 16px;
 }
 
-.preview-coordinates {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    min-width: 0;
-}
-
-.preview-coordinates span {
-    color: #64748b;
-    font-size: 12px;
-}
-
-.preview-coordinates code {
-    direction: ltr;
-    text-align: right;
-    color: #0f172a;
-    font-size: 13px;
-    font-family: monospace;
-    overflow-wrap: anywhere;
-}
-
 .copy-coordinates-btn {
     display: inline-flex;
     align-items: center;
