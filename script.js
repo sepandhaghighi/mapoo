@@ -49,8 +49,7 @@ function resetOutputLinks() {
 
     previewExpandBtn.setAttribute("aria-expanded", "false");
     previewExpandBtn.setAttribute("aria-label", "نمایش نقشه در اندازه بزرگ‌تر");
-    previewExpandBtn.innerHTML =
-        '<i class="fa-solid fa-expand" aria-hidden="true"></i>';
+    previewExpandBtn.innerHTML = '<i class="fa-solid fa-expand" aria-hidden="true"></i>';
 
     const links = [googleLink, wazeLink, neshanLink, baladLink, osmLink];
 
@@ -527,16 +526,9 @@ function setPreviewExpanded(expanded) {
     locationPreview.classList.toggle("is-expanded", expanded);
 
     previewExpandBtn.setAttribute("aria-expanded", String(expanded));
-    previewExpandBtn.setAttribute(
-        "aria-label",
-        expanded
-            ? "بازگشت به اندازه عادی نقشه"
-            : "نمایش نقشه در اندازه بزرگ‌تر"
-    );
+    previewExpandBtn.setAttribute("aria-label", expanded ? "بازگشت به اندازه عادی نقشه" : "نمایش نقشه در اندازه بزرگ‌تر");
 
-    previewExpandBtn.innerHTML = expanded
-        ? '<i class="fa-solid fa-compress" aria-hidden="true"></i>'
-        : '<i class="fa-solid fa-expand" aria-hidden="true"></i>';
+    previewExpandBtn.innerHTML = expanded ? '<i class="fa-solid fa-compress" aria-hidden="true"></i>' : '<i class="fa-solid fa-expand" aria-hidden="true"></i>';
 
     if (previewMap) {
         requestAnimationFrame(() => {
@@ -546,9 +538,7 @@ function setPreviewExpanded(expanded) {
 }
 
 previewExpandBtn.addEventListener("click", () => {
-    setPreviewExpanded(
-        previewExpandBtn.getAttribute("aria-expanded") !== "true"
-    );
+    setPreviewExpanded(previewExpandBtn.getAttribute("aria-expanded") !== "true");
 });
 
 function convertLink() {
