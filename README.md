@@ -48,6 +48,7 @@ Mapoo currently supports the following map services:
 * Waze
 * Neshan
 * Balad
+* OpenStreetMap
 
 
 ## Usage

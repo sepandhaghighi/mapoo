@@ -11,6 +11,7 @@ const googleLink = document.getElementById("google-link");
 const wazeLink = document.getElementById("waze-link");
 const neshanLink = document.getElementById("neshan-link");
 const baladLink = document.getElementById("balad-link");
+const osmLink = document.getElementById("osm-link");
 
 const historyList = document.getElementById("history-list");
 const clearHistoryBtn = document.getElementById("clear-history-btn");
@@ -36,7 +37,7 @@ function renderAppVersion() {
 function resetOutputLinks() {
     apps.classList.remove("visible");
 
-    const links = [googleLink, wazeLink, neshanLink, baladLink];
+    const links = [googleLink, wazeLink, neshanLink, baladLink, osmLink];
 
     links.forEach(link => {
         link.href = "#";
@@ -76,6 +77,19 @@ function normalizeInput(value) {
 
 function extractCoordinates(input) {
     const value = normalizeInput(input);
+
+    const osmLatFirst = value.match(/[?&]mlat=(-?\d+(?:\.\d+)?)(?:&|#|$)/);
+
+    const osmLonFirst = value.match(/[?&]mlon=(-?\d+(?:\.\d+)?)(?:&|#|$)/);
+
+    if (osmLatFirst && osmLonFirst) {
+        const lat = Number(osmLatFirst[1]);
+        const lng = Number(osmLonFirst[1]);
+
+        if (isValidCoordinates(lat, lng)) {
+            return { lat, lng };
+        }
+    }
 
     const neshanHash = value.match(/#c(-?\d+(?:\.\d+)?)-(-?\d+(?:\.\d+)?)(?:-\d+(?:\.\d+)?z)?(?:-\d+p)?/i);
 
@@ -240,7 +254,9 @@ function createMapLinks(lat, lng) {
 
         neshan: `https://neshan.org/maps/share/${lat},${lng}`,
 
-        balad: `https://balad.ir/location?latitude=${lat}&longitude=${lng}&zoom=16.5`
+        balad: `https://balad.ir/location?latitude=${lat}&longitude=${lng}&zoom=16.5`,
+
+        osm: `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=16/${lat}/${lng}`
     };
 }
 
@@ -249,11 +265,13 @@ function setOutputLinks(links) {
     wazeLink.href = links.waze;
     neshanLink.href = links.neshan;
     baladLink.href = links.balad;
+    osmLink.href = links.osm;
 
     googleLink.classList.add("active");
     wazeLink.classList.add("active");
     neshanLink.classList.add("active");
     baladLink.classList.add("active");
+    osmLink.classList.add("active");
 
     apps.classList.add("visible");
 }

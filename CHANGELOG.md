@@ -6,12 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
+- Support OpenStreetMap
 - `formatCoordinates` function
 - `resetPageUrl` function
 ### Changed
 - `convertLink` function modified
 - `renderHistory` function modified
 - `toPersianDigits` function modified
+- `README.md` updated
 ## [0.3] - 2026-10-17
 ### Added
 - Icons
