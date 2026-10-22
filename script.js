@@ -17,6 +17,16 @@ const historyList = document.getElementById("history-list");
 const clearHistoryBtn = document.getElementById("clear-history-btn");
 const appVersion = document.getElementById("app-version");
 
+const locationPreview = document.getElementById("location-preview");
+const previewLocationName = document.getElementById("preview-location-name");
+const previewCoordinates = document.getElementById("preview-coordinates");
+const previewExpandBtn = document.getElementById("preview-expand-btn");
+const copyCoordinatesBtn = document.getElementById("copy-coordinates-btn");
+
+let previewMap = null;
+let previewMarker = null;
+let currentPreviewCoordinates = null;
+
 function toPersianDigits(value) {
     return String(value)
         .replace(/\d/g, digit => "۰۱۲۳۴۵۶۷۸۹"[digit])
@@ -36,6 +46,15 @@ function renderAppVersion() {
 
 function resetOutputLinks() {
     apps.classList.remove("visible");
+
+    locationPreview.hidden = true;
+    locationPreview.classList.remove("is-expanded");
+    currentPreviewCoordinates = null;
+
+    previewExpandBtn.setAttribute("aria-expanded", "false");
+    previewExpandBtn.setAttribute("aria-label", "نمایش نقشه در اندازه بزرگ‌تر");
+    previewExpandBtn.innerHTML =
+        '<i class="fa-solid fa-expand" aria-hidden="true"></i>';
 
     const links = [googleLink, wazeLink, neshanLink, baladLink, osmLink];
 
@@ -470,6 +489,89 @@ function renderHistory() {
     });
 }
 
+function initializePreviewMap(lat, lng) {
+    if (!previewMap) {
+        previewMap = L.map("preview-map", {
+            zoomControl: false,
+            scrollWheelZoom: false
+        });
+
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright" ' +
+                'target="_blank" rel="noopener noreferrer">' +
+                "OpenStreetMap contributors</a>"
+        }).addTo(previewMap);
+
+        L.control.zoom({ position: "topright" }).addTo(previewMap);
+
+        previewMarker = L.marker([lat, lng]).addTo(previewMap);
+    } else {
+        previewMarker.setLatLng([lat, lng]);
+    }
+
+    previewMap.setView([lat, lng], 16);
+}
+
+function renderLocationPreview(lat, lng, name = "") {
+    currentPreviewCoordinates = { lat, lng };
+
+    previewLocationName.textContent =
+        name.trim() || "موقعیت شناسایی‌شده";
+
+    previewCoordinates.textContent = `${lat}, ${lng}`;
+
+    locationPreview.hidden = false;
+    setPreviewExpanded(false);
+    initializePreviewMap(lat, lng);
+
+    requestAnimationFrame(() => {
+        previewMap.invalidateSize({ pan: false });
+    });
+}
+
+function setPreviewExpanded(expanded) {
+    locationPreview.classList.toggle("is-expanded", expanded);
+
+    previewExpandBtn.setAttribute("aria-expanded", String(expanded));
+    previewExpandBtn.setAttribute(
+        "aria-label",
+        expanded
+            ? "بازگشت به اندازه عادی نقشه"
+            : "نمایش نقشه در اندازه بزرگ‌تر"
+    );
+
+    previewExpandBtn.innerHTML = expanded
+        ? '<i class="fa-solid fa-compress" aria-hidden="true"></i>'
+        : '<i class="fa-solid fa-expand" aria-hidden="true"></i>';
+
+    if (previewMap) {
+        requestAnimationFrame(() => {
+            previewMap.invalidateSize({ pan: false });
+        });
+    }
+}
+
+previewExpandBtn.addEventListener("click", () => {
+    setPreviewExpanded(
+        previewExpandBtn.getAttribute("aria-expanded") !== "true"
+    );
+});
+
+copyCoordinatesBtn.addEventListener("click", async () => {
+    if (!currentPreviewCoordinates) return;
+
+    const { lat, lng } = currentPreviewCoordinates;
+
+    try {
+        await navigator.clipboard.writeText(`${lat}, ${lng}`);
+        showMessage("مختصات با موفقیت کپی شد.", "success");
+    } catch {
+        showMessage("کپی خودکار امکان‌پذیر نیست. مختصات را دستی کپی کنید.");
+    }
+});
+
 function convertLink() {
     clearMessage();
     resetOutputLinks();
@@ -499,6 +601,7 @@ function convertLink() {
     const links = createMapLinks(lat, lng);
 
     setOutputLinks(links);
+    renderLocationPreview(lat, lng, name);
     saveHistory(lat, lng, name);
     updatePageUrl(lat, lng, name);
 
