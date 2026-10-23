@@ -24,6 +24,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link href="libs/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="libs/leaflet/leaflet.css" rel="stylesheet" type="text/css">
     <link href="style.css" rel="stylesheet" type="text/css">
     <title>مپو | تبدیل لینک نقشه بین سرویس‌های مختلف</title>
   </head>
@@ -99,6 +100,25 @@
                 </a>
               </div>
             </div>
+            <div id="location-preview" class="location-preview" hidden>
+              <div class="preview-header">
+                <div class="preview-heading">
+                  <span class="preview-icon" aria-hidden="true">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                  </span>
+                  <div>
+                    <h2>پیش‌نمایش موقعیت</h2>
+                    <p id="preview-location-name">موقعیت شناسایی‌شده</p>
+                  </div>
+                </div>
+
+                <button id="preview-expand-btn" class="preview-expand-btn" type="button" aria-expanded="false" aria-controls="preview-map" aria-label="نمایش نقشه در اندازه بزرگ‌تر">
+                  <i class="fa-solid fa-expand" aria-hidden="true"></i>
+                </button>
+              </div>
+
+              <div id="preview-map" class="preview-map" role="region" aria-label="نقشه پیش‌نمایش موقعیت" tabindex="0"></div>
+            </div>
           </section>
 
           <section class="card">
@@ -119,6 +139,7 @@
         <span id="app-version"></span>
       </footer>
     </div>
+    <script src="libs/leaflet/leaflet.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

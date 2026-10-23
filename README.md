@@ -83,6 +83,7 @@ http://localhost:5010
 
 - [Vazirmatn Font](https://fonts.google.com/specimen/Vazirmatn)
 - [Font Awesome](https://fontawesome.com/) v7.2.0
+- [Leaflet](https://leafletjs.com/) v1.9.4
 
 ## Issues & Bug Reports
 
