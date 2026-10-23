@@ -434,84 +434,6 @@ footer {
     outline-offset: 3px;
 }
 
-@media (max-width: 600px) {
-
-    .container {
-        width: min(100% - 16px, 760px);
-    }
-
-    header {
-        padding-top: max(18px, env(safe-area-inset-top));
-        padding-bottom: 18px;
-    }
-
-    .brand-icon {
-        height: 40px;
-    }
-
-    .brand h1 {
-        font-size: 21px;
-    }
-
-    .brand p {
-        font-size: 12px;
-    }
-
-    main {
-        padding-top: 16px;
-    }
-
-    .card {
-        padding: 16px;
-        border-radius: 15px;
-    }
-
-    .input-row {
-        grid-template-columns: 1fr;
-    }
-
-    .primary-btn {
-        width: 100%;
-    }
-
-    .apps.visible {
-        grid-template-columns: 1fr;
-    }
-
-    .app-card {
-        min-height: 64px;
-    }
-
-    .history-item {
-        align-items: flex-start;
-    }
-
-    .history-actions {
-        flex-direction: column;
-    }
-
-    .history-open, .history-delete {
-        width: 74px;
-    }
-}
-
-@media (max-width: 380px) {
-    
-    .history-item {
-        flex-direction: column;
-    }
-
-    .history-actions {
-        width: 100%;
-        flex-direction: row;
-    }
-
-    .history-open, .history-delete {
-        flex: 1;
-        width: auto;
-    }
-}
-
 /* Location preview */
 .location-preview {
     margin-top: 22px;
@@ -604,6 +526,65 @@ footer {
 }
 
 @media (max-width: 600px) {
+
+    .container {
+        width: min(100% - 16px, 760px);
+    }
+
+    header {
+        padding-top: max(18px, env(safe-area-inset-top));
+        padding-bottom: 18px;
+    }
+
+    .brand-icon {
+        height: 40px;
+    }
+
+    .brand h1 {
+        font-size: 21px;
+    }
+
+    .brand p {
+        font-size: 12px;
+    }
+
+    main {
+        padding-top: 16px;
+    }
+
+    .card {
+        padding: 16px;
+        border-radius: 15px;
+    }
+
+    .input-row {
+        grid-template-columns: 1fr;
+    }
+
+    .primary-btn {
+        width: 100%;
+    }
+
+    .apps.visible {
+        grid-template-columns: 1fr;
+    }
+
+    .app-card {
+        min-height: 64px;
+    }
+
+    .history-item {
+        align-items: flex-start;
+    }
+
+    .history-actions {
+        flex-direction: column;
+    }
+
+    .history-open, .history-delete {
+        width: 74px;
+    }
+
     .location-preview {
         margin-top: 18px;
         border-radius: 13px;
@@ -619,5 +600,22 @@ footer {
 
     .location-preview.is-expanded .preview-map {
         height: 360px;
+    }
+}
+
+@media (max-width: 380px) {
+    
+    .history-item {
+        flex-direction: column;
+    }
+
+    .history-actions {
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .history-open, .history-delete {
+        flex: 1;
+        width: auto;
     }
 }
