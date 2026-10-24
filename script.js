@@ -94,6 +94,16 @@ function normalizeInput(value) {
 function extractCoordinates(input) {
     const value = normalizeInput(input);
 
+    const appleMaps = value.match(/(?:[?&](?:coordinate|ll|q|center)=|@)(-?\d+(?:\.\d+)?)(?:,|%2C|%2c)\s*(-?\d+(?:\.\d+)?)/);
+
+    if (appleMaps) {
+        const lat = Number(appleMaps[1]);
+        const lng = Number(appleMaps[2]);
+        if (isValidCoordinates(lat, lng)) {
+            return { lat, lng };
+        }
+    }
+
     const osmLatFirst = value.match(/[?&]mlat=(-?\d+(?:\.\d+)?)(?:&|#|$)/);
 
     const osmLonFirst = value.match(/[?&]mlon=(-?\d+(?:\.\d+)?)(?:&|#|$)/);
