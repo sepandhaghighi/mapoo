@@ -49,6 +49,7 @@ Mapoo currently supports the following map services:
 * Neshan
 * Balad
 * OpenStreetMap
+* Apple Maps
 
 
 ## Usage

@@ -12,6 +12,8 @@ const wazeLink = document.getElementById("waze-link");
 const neshanLink = document.getElementById("neshan-link");
 const baladLink = document.getElementById("balad-link");
 const osmLink = document.getElementById("osm-link");
+const appleLink = document.getElementById("apple-link");
+
 
 const historyList = document.getElementById("history-list");
 const clearHistoryBtn = document.getElementById("clear-history-btn");
@@ -51,7 +53,7 @@ function resetOutputLinks() {
     previewExpandBtn.setAttribute("aria-label", "نمایش نقشه در اندازه بزرگ‌تر");
     previewExpandBtn.innerHTML = '<i class="fa-solid fa-expand" aria-hidden="true"></i>';
 
-    const links = [googleLink, wazeLink, neshanLink, baladLink, osmLink];
+    const links = [googleLink, wazeLink, neshanLink, baladLink, osmLink, appleLink];
 
     links.forEach(link => {
         link.href = "#";
@@ -91,6 +93,16 @@ function normalizeInput(value) {
 
 function extractCoordinates(input) {
     const value = normalizeInput(input);
+
+    const appleMaps = value.match(/(?:[?&](?:coordinate|ll|q|center)=|@)(-?\d+(?:\.\d+)?)(?:,|%2C|%2c)\s*(-?\d+(?:\.\d+)?)/);
+
+    if (appleMaps) {
+        const lat = Number(appleMaps[1]);
+        const lng = Number(appleMaps[2]);
+        if (isValidCoordinates(lat, lng)) {
+            return { lat, lng };
+        }
+    }
 
     const osmLatFirst = value.match(/[?&]mlat=(-?\d+(?:\.\d+)?)(?:&|#|$)/);
 
@@ -270,7 +282,10 @@ function createMapLinks(lat, lng) {
 
         balad: `https://balad.ir/location?latitude=${lat}&longitude=${lng}&zoom=16.5`,
 
-        osm: `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=16/${lat}/${lng}`
+        osm: `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=16/${lat}/${lng}`,
+
+        apple: `https://maps.apple.com/?q=${lat},${lng}&ll=${lat},${lng}`
+
     };
 }
 
@@ -280,12 +295,14 @@ function setOutputLinks(links) {
     neshanLink.href = links.neshan;
     baladLink.href = links.balad;
     osmLink.href = links.osm;
+    appleLink.href = links.apple;
 
     googleLink.classList.add("active");
     wazeLink.classList.add("active");
     neshanLink.classList.add("active");
     baladLink.classList.add("active");
     osmLink.classList.add("active");
+    appleLink.classList.add("active");
 
     apps.classList.add("visible");
 }
