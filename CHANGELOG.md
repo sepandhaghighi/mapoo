@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - Support Apple Maps
+### Changed
+- `extractCoordinates` function modified
 ## [0.4] - 2026-10-24
 ### Added
 - Location preview
