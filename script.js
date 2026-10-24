@@ -12,6 +12,8 @@ const wazeLink = document.getElementById("waze-link");
 const neshanLink = document.getElementById("neshan-link");
 const baladLink = document.getElementById("balad-link");
 const osmLink = document.getElementById("osm-link");
+const appleLink = document.getElementById("apple-link");
+
 
 const historyList = document.getElementById("history-list");
 const clearHistoryBtn = document.getElementById("clear-history-btn");
@@ -51,7 +53,7 @@ function resetOutputLinks() {
     previewExpandBtn.setAttribute("aria-label", "نمایش نقشه در اندازه بزرگ‌تر");
     previewExpandBtn.innerHTML = '<i class="fa-solid fa-expand" aria-hidden="true"></i>';
 
-    const links = [googleLink, wazeLink, neshanLink, baladLink, osmLink];
+    const links = [googleLink, wazeLink, neshanLink, baladLink, osmLink, appleLink];
 
     links.forEach(link => {
         link.href = "#";
@@ -270,7 +272,9 @@ function createMapLinks(lat, lng) {
 
         balad: `https://balad.ir/location?latitude=${lat}&longitude=${lng}&zoom=16.5`,
 
-        osm: `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=16/${lat}/${lng}`
+        osm: `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=16/${lat}/${lng}`,
+
+        apple: `https://maps.apple.com/?ll=${lat},${lng}`
     };
 }
 
@@ -280,12 +284,14 @@ function setOutputLinks(links) {
     neshanLink.href = links.neshan;
     baladLink.href = links.balad;
     osmLink.href = links.osm;
+    appleLink.href = links.apple;
 
     googleLink.classList.add("active");
     wazeLink.classList.add("active");
     neshanLink.classList.add("active");
     baladLink.classList.add("active");
     osmLink.classList.add("active");
+    appleLink.classList.add("active");
 
     apps.classList.add("visible");
 }
