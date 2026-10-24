@@ -1,5 +1,5 @@
 const STORAGE_KEY = "mapooHistory";
-const MAPOO_VERSION = "0.3";
+const MAPOO_VERSION = "0.4";
 
 const urlInput = document.getElementById("url-input");
 const nameInput = document.getElementById("name-input");
