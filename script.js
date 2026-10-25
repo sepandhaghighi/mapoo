@@ -13,6 +13,7 @@ const neshanLink = document.getElementById("neshan-link");
 const baladLink = document.getElementById("balad-link");
 const osmLink = document.getElementById("osm-link");
 const appleLink = document.getElementById("apple-link");
+const yandexLink = document.getElementById("yandex-link");
 
 
 const historyList = document.getElementById("history-list");
@@ -53,7 +54,7 @@ function resetOutputLinks() {
     previewExpandBtn.setAttribute("aria-label", "نمایش نقشه در اندازه بزرگ‌تر");
     previewExpandBtn.innerHTML = '<i class="fa-solid fa-expand" aria-hidden="true"></i>';
 
-    const links = [googleLink, wazeLink, neshanLink, baladLink, osmLink, appleLink];
+    const links = [googleLink, wazeLink, neshanLink, baladLink, osmLink, appleLink, yandexLink];
 
     links.forEach(link => {
         link.href = "#";
@@ -93,6 +94,28 @@ function normalizeInput(value) {
 
 function extractCoordinates(input) {
     const value = normalizeInput(input);
+
+    const yandexMatch = value.match(/(?:^|[/?#])maps\.yandex\.[^/?#]+\/(?:[^?#]*\/)?(?:\?[^#]*&)?ll=(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)(?:&|#|$)/i);
+
+    if (yandexMatch) {
+        const lng = Number(yandexMatch[1]);
+        const lat = Number(yandexMatch[2]);
+
+        if (isValidCoordinates(lat, lng)) {
+            return { lat, lng };
+        }
+    }
+
+    const yandexRouteMatch = value.match(/(?:^|[?&])rtext=[^&]*?(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)(?:%7E|~|%3B|;|&|$)/i);
+
+    if (yandexRouteMatch) {
+        const lat = Number(yandexRouteMatch[1]);
+        const lng = Number(yandexRouteMatch[2]);
+
+        if (isValidCoordinates(lat, lng)) {
+            return { lat, lng };
+        }
+    }
 
     const appleMaps = value.match(/(?:[?&](?:coordinate|ll|q|center)=|@)(-?\d+(?:\.\d+)?)(?:,|%2C|%2c)\s*(-?\d+(?:\.\d+)?)/);
 
