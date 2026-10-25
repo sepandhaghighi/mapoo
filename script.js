@@ -95,25 +95,18 @@ function normalizeInput(value) {
 function extractCoordinates(input) {
     const value = normalizeInput(input);
 
-    const yandexMatch = value.match(/(?:^|[/?#])maps\.yandex\.[^/?#]+\/(?:[^?#]*\/)?(?:\?[^#]*&)?ll=(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)(?:&|#|$)/i);
+    const yandexMatch = value.match(/(?:https?:\/\/)?(?:www\.)?yandex\.(?:com|ru|com\.tr|by|kz|uz)\/maps\/[^?#]*(?:\?[^#]*)?/i);
 
     if (yandexMatch) {
-        const lng = Number(yandexMatch[1]);
-        const lat = Number(yandexMatch[2]);
+        const queryMatch = yandexMatch[0].match(/[?&]ll=(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/i);
 
-        if (isValidCoordinates(lat, lng)) {
-            return { lat, lng };
-        }
-    }
+        if (queryMatch) {
+            const lng = Number(queryMatch[1]);
+            const lat = Number(queryMatch[2]);
 
-    const yandexRouteMatch = value.match(/(?:^|[?&])rtext=[^&]*?(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)(?:%7E|~|%3B|;|&|$)/i);
-
-    if (yandexRouteMatch) {
-        const lat = Number(yandexRouteMatch[1]);
-        const lng = Number(yandexRouteMatch[2]);
-
-        if (isValidCoordinates(lat, lng)) {
-            return { lat, lng };
+            if (isValidCoordinates(lat, lng)) {
+                return { lat, lng };
+            }
         }
     }
 
