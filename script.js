@@ -321,6 +321,7 @@ function setOutputLinks(links) {
     baladLink.href = links.balad;
     osmLink.href = links.osm;
     appleLink.href = links.apple;
+    yandexLink.href = links.yandex;
 
     googleLink.classList.add("active");
     wazeLink.classList.add("active");
@@ -328,6 +329,7 @@ function setOutputLinks(links) {
     baladLink.classList.add("active");
     osmLink.classList.add("active");
     appleLink.classList.add("active");
+    yandexLink.classList.add("active");
 
     apps.classList.add("visible");
 }
