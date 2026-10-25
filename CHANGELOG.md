@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - Support Apple Maps
+- Support Yandex Maps
 ### Changed
 - `extractCoordinates` function modified
 ## [0.4] - 2026-10-24
