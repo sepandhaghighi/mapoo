@@ -307,7 +307,9 @@ function createMapLinks(lat, lng) {
 
         osm: `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=16/${lat}/${lng}`,
 
-        apple: `https://maps.apple.com/?q=${lat},${lng}&ll=${lat},${lng}`
+        apple: `https://maps.apple.com/?q=${lat},${lng}&ll=${lat},${lng}`,
+
+        yandex: `https://yandex.com/maps/?ll=${lng},${lat}&z=16&pt=${lng},${lat}`,
 
     };
 }
