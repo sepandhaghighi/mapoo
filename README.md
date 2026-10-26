@@ -50,6 +50,7 @@ Mapoo currently supports the following map services:
 * Balad
 * OpenStreetMap
 * Apple Maps
+* Yandex Maps
 
 
 ## Usage
