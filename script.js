@@ -95,9 +95,50 @@ function normalizeInput(value) {
 function extractCoordinates(input) {
     const value = normalizeInput(input);
 
+    let hostname = "";
+
+    try {
+        const url = new URL(/^[a-z][a-z\d+.-]*:\/\//i.test(value) ? value : `https://${value}`);
+        hostname = url.hostname.toLowerCase();
+    } catch {
+    }
+
+    const isYandex =
+        hostname === "yandex.com" ||
+        hostname.endsWith(".yandex.com") ||
+        hostname === "yandex.ru" ||
+        hostname.endsWith(".yandex.ru") ||
+        hostname === "yandex.com.tr" ||
+        hostname.endsWith(".yandex.com.tr") ||
+        hostname === "yandex.by" ||
+        hostname.endsWith(".yandex.by") ||
+        hostname === "yandex.kz" ||
+        hostname.endsWith(".yandex.kz") ||
+        hostname === "yandex.uz" ||
+        hostname.endsWith(".yandex.uz");
+
+    const isApple = hostname === "maps.apple.com";
+
+    const isOSM = hostname === "openstreetmap.org" || hostname.endsWith(".openstreetmap.org");
+
+    const isNeshan = hostname === "neshan.org" || hostname.endsWith(".neshan.org");
+
+    const isGoogle =
+        hostname === "google.com" ||
+        hostname.endsWith(".google.com") ||
+        hostname.endsWith(".google.co.uk") ||
+        hostname.endsWith(".google.de") ||
+        hostname.endsWith(".google.fr") ||
+        hostname.endsWith(".google.ca") ||
+        hostname.endsWith(".google.com.tr");
+
+    const isWaze = hostname === "waze.com" || hostname.endsWith(".waze.com");
+
+    const isBalad = hostname === "balad.ir" || hostname.endsWith(".balad.ir");
+
     const yandexMatch = value.match(/(?:https?:\/\/)?(?:www\.)?yandex\.(?:com|ru|com\.tr|by|kz|uz)\/maps\/[^?#]*(?:\?[^#]*)?/i);
 
-    if (yandexMatch) {
+    if (isYandex && yandexMatch) {
         const queryMatch = yandexMatch[0].match(/[?&]ll=(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/i);
 
         if (queryMatch) {
@@ -110,7 +151,7 @@ function extractCoordinates(input) {
         }
     }
 
-    const appleMaps = value.match(/(?:[?&](?:coordinate|ll|q|center)=|@)(-?\d+(?:\.\d+)?)(?:,|%2C|%2c)\s*(-?\d+(?:\.\d+)?)/);
+    const appleMaps = isApple ? value.match(/(?:[?&](?:coordinate|ll|q|center)=|@)(-?\d+(?:\.\d+)?)(?:,|%2C|%2c)\s*(-?\d+(?:\.\d+)?)/) : null;
 
     if (appleMaps) {
         const lat = Number(appleMaps[1]);
@@ -120,9 +161,9 @@ function extractCoordinates(input) {
         }
     }
 
-    const osmLatFirst = value.match(/[?&]mlat=(-?\d+(?:\.\d+)?)(?:&|#|$)/);
+    const osmLatFirst = isOSM ? value.match(/[?&]mlat=(-?\d+(?:\.\d+)?)(?:&|#|$)/) : null;
 
-    const osmLonFirst = value.match(/[?&]mlon=(-?\d+(?:\.\d+)?)(?:&|#|$)/);
+    const osmLonFirst = isOSM ? value.match(/[?&]mlon=(-?\d+(?:\.\d+)?)(?:&|#|$)/) : null;
 
     if (osmLatFirst && osmLonFirst) {
         const lat = Number(osmLatFirst[1]);
@@ -133,7 +174,7 @@ function extractCoordinates(input) {
         }
     }
 
-    const neshanHash = value.match(/#c(-?\d+(?:\.\d+)?)-(-?\d+(?:\.\d+)?)(?:-\d+(?:\.\d+)?z)?(?:-\d+p)?/i);
+    const neshanHash = isNeshan ? value.match(/#c(-?\d+(?:\.\d+)?)-(-?\d+(?:\.\d+)?)(?:-\d+(?:\.\d+)?z)?(?:-\d+p)?/i) : null;
 
     if (neshanHash) {
         return {
@@ -142,7 +183,7 @@ function extractCoordinates(input) {
         };
     }
 
-    const googleAt = value.match(/@(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i);
+    const googleAt = isGoogle ? value.match(/@(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i) : null;
 
     if (googleAt) {
         return {
@@ -151,7 +192,7 @@ function extractCoordinates(input) {
         };
     }
 
-    const googleQuery = value.match(/(?:[?&](?:q|query)=)(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i);
+    const googleQuery = isGoogle ? value.match(/(?:[?&](?:q|query)=)(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i) : null;
 
     if (googleQuery) {
         return {
@@ -160,7 +201,7 @@ function extractCoordinates(input) {
         };
     }
 
-    const waze = value.match(/(?:[?&]ll=)(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i);
+    const waze = isWaze ? value.match(/(?:[?&]ll=)(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i) : null;
 
     if (waze) {
         return {
@@ -187,7 +228,7 @@ function extractCoordinates(input) {
         };
     }
 
-    const balad = value.match(/[?&]latitude=(-?\d+(?:\.\d+))[^\s#]*?[?&]longitude=(-?\d+(?:\.\d+))/i);
+    const balad = isBalad ? value.match(/[?&]latitude=(-?\d+(?:\.\d+))[^\s#]*?[?&]longitude=(-?\d+(?:\.\d+))/i) : null;
 
     if (balad) {
         return {
