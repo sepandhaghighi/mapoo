@@ -183,6 +183,15 @@ function extractCoordinates(input) {
         };
     }
 
+    const balad = isBalad ? value.match(/[?&]latitude=(-?\d+(?:\.\d+))[^\s#]*?[?&]longitude=(-?\d+(?:\.\d+))/i) : null;
+
+    if (balad) {
+        return {
+            lat: Number(balad[1]),
+            lng: Number(balad[2])
+        };
+    }
+
     const googleAt = isGoogle ? value.match(/@(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i) : null;
 
     if (googleAt) {
@@ -225,15 +234,6 @@ function extractCoordinates(input) {
         return {
             lat: Number(lngLat[2]),
             lng: Number(lngLat[1])
-        };
-    }
-
-    const balad = isBalad ? value.match(/[?&]latitude=(-?\d+(?:\.\d+))[^\s#]*?[?&]longitude=(-?\d+(?:\.\d+))/i) : null;
-
-    if (balad) {
-        return {
-            lat: Number(balad[1]),
-            lng: Number(balad[2])
         };
     }
 
