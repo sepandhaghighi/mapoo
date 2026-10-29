@@ -116,7 +116,11 @@ function extractCoordinates(input) {
         hostname === "maps.apple" ||
         hostname.endsWith(".maps.apple");
 
-    const isOSM = hostname === "openstreetmap.org" || hostname.endsWith(".openstreetmap.org");
+    const isOSM =
+        hostname === "openstreetmap.org" ||
+        hostname.endsWith(".openstreetmap.org") ||
+        hostname === "osm.org" ||
+        hostname.endsWith(".osm.org");
 
     const isNeshan = hostname === "neshan.org" || hostname.endsWith(".neshan.org");
 
