@@ -110,7 +110,11 @@ function extractCoordinates(input) {
             part === "yandex" && index < parts.length - 1
         );
 
-    const isApple = hostname === "maps.apple.com";
+    const isApple =
+        hostname === "apple.com" ||
+        hostname.endsWith(".apple.com") ||
+        hostname === "maps.apple" ||
+        hostname.endsWith(".maps.apple");
 
     const isOSM = hostname === "openstreetmap.org" || hostname.endsWith(".openstreetmap.org");
 
