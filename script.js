@@ -122,7 +122,11 @@ function extractCoordinates(input) {
         hostname === "osm.org" ||
         hostname.endsWith(".osm.org");
 
-    const isNeshan = hostname === "neshan.org" || hostname.endsWith(".neshan.org");
+    const isNeshan =
+        hostname === "neshan.org" ||
+        hostname.endsWith(".neshan.org") ||
+        hostname === "nshn.ir" ||
+        hostname.endsWith(".nshn.ir");
 
     const isGoogle =
         hostname === "goo.gl" ||
