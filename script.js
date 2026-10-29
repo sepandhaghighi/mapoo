@@ -117,14 +117,15 @@ function extractCoordinates(input) {
     const isNeshan = hostname === "neshan.org" || hostname.endsWith(".neshan.org");
 
     const isGoogle =
+        hostname === "goo.gl" ||
+        hostname.endsWith(".goo.gl") ||
         hostname === "google.com" ||
         hostname.endsWith(".google.com") ||
-        hostname.endsWith(".google.co.uk") ||
-        hostname.endsWith(".google.de") ||
-        hostname.endsWith(".google.fr") ||
-        hostname.endsWith(".google.ca") ||
-        hostname.endsWith(".google.com.tr");
-
+        /^google\.[a-z]{2,3}(\.[a-z]{2,3})?$/.test(hostname) ||
+        hostname.split(".").some((part, index, parts) =>
+            part === "google" && index < parts.length - 1
+        );
+    
     const isWaze = hostname === "waze.com" || hostname.endsWith(".waze.com");
 
     const isBalad = hostname === "balad.ir" || hostname.endsWith(".balad.ir");
