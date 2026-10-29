@@ -102,20 +102,13 @@ function extractCoordinates(input) {
         hostname = url.hostname.toLowerCase();
     } catch {
     }
-
+    
     const isYandex =
         hostname === "yandex.com" ||
         hostname.endsWith(".yandex.com") ||
-        hostname === "yandex.ru" ||
-        hostname.endsWith(".yandex.ru") ||
-        hostname === "yandex.com.tr" ||
-        hostname.endsWith(".yandex.com.tr") ||
-        hostname === "yandex.by" ||
-        hostname.endsWith(".yandex.by") ||
-        hostname === "yandex.kz" ||
-        hostname.endsWith(".yandex.kz") ||
-        hostname === "yandex.uz" ||
-        hostname.endsWith(".yandex.uz");
+        hostname.split(".").some((part, index, parts) =>
+            part === "yandex" && index < parts.length - 1
+        );
 
     const isApple = hostname === "maps.apple.com";
 
