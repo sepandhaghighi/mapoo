@@ -216,13 +216,33 @@ function extractCoordinates(input) {
         };
     }
 
-    const waze = isWaze ? value.match(/(?:[?&]ll=)(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i) : null;
+    if (isWaze) {
+        try {
+            const wazeUrl = new URL(value);
+            const destination = wazeUrl.searchParams.get("to");
+            const destinationMatch = destination ? destination.match(/^ll\.(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)$/i) : null;
 
-    if (waze) {
-        return {
-            lat: Number(waze[1]),
-            lng: Number(waze[2])
-        };
+            if (destinationMatch) {
+                const lat = Number(destinationMatch[1]);
+                const lng = Number(destinationMatch[2]);
+
+                if (isValidCoordinates(lat, lng)) {
+                    return { lat, lng };
+                }
+            }
+            const legacyLocation = wazeUrl.searchParams.get("ll");
+            const legacyMatch = legacyLocation ? legacyLocation.match(/^(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)$/) : null;
+
+            if (legacyMatch) {
+                const lat = Number(legacyMatch[1]);
+                const lng = Number(legacyMatch[2]);
+
+                if (isValidCoordinates(lat, lng)) {
+                    return { lat, lng };
+                }
+            }
+        } catch {
+        }
     }
 
     const latLng = value.match(/(?:[?&]|^)(?:lat(?:itude)?|y)=(-?\d+(?:\.\d+)?)[^#]*?(?:[?&]|&)(?:lng|lon|longitude|x)=(-?\d+(?:\.\d+)?)/i);
