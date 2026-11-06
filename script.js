@@ -180,13 +180,26 @@ function extractCoordinates(input) {
         }
     }
 
+    const neshanPath = isNeshan ? value.match(/\/maps\/share\/(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)(?:[/?#]|$)/i) : null;
+
+    if (neshanPath) {
+        const lat = Number(neshanPath[1]);
+        const lng = Number(neshanPath[2]);
+
+        if (isValidCoordinates(lat, lng)) {
+            return { lat, lng };
+        }
+    }
+
     const neshanHash = isNeshan ? value.match(/#c(-?\d+(?:\.\d+)?)-(-?\d+(?:\.\d+)?)(?:-\d+(?:\.\d+)?z)?(?:-\d+p)?/i) : null;
 
     if (neshanHash) {
-        return {
-            lat: Number(neshanHash[1]),
-            lng: Number(neshanHash[2])
-        };
+        const lat = Number(neshanHash[1]);
+        const lng = Number(neshanHash[2]);
+
+        if (isValidCoordinates(lat, lng)) {
+            return { lat, lng };
+        }
     }
 
     const balad = isBalad ? value.match(/[?&]latitude=(-?\d+(?:\.\d+))[^\s#]*?[?&]longitude=(-?\d+(?:\.\d+))/i) : null;
