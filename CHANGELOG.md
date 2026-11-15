@@ -8,10 +8,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Support Apple Maps
 - Support Yandex Maps
+- `.ghps` config
 ### Changed
 - `extractCoordinates` function modified
 - Waze Live Map URL bug fixed
 - Neshan Maps share URL bug fixed
+- `README.md` updated
 ## [0.4] - 2026-10-24
 ### Added
 - Location preview
